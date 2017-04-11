@@ -1,0 +1,124 @@
+body {
+  background-color: rgba(20,20,20,1);
+  font-family: 'Open Sans', Arial;
+}
+
+.project-list {
+  margin: 3em 0em 1em 0em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.my-work{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 300px;
+  height: 250px;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 0.35em;
+  margin: 0.25em;
+}
+
+.my-work-title {
+  color: white;
+  margin-bottom: 0.25em;
+  font-weight: 300;
+}
+
+.my-work-image {
+  height: 200px;
+}
+
+img.my-work-image {
+  max-height: 100%;
+  width: auto;
+}
+
+.my-work-description {
+  margin-top: 0.25em;
+  color: white;
+  font-style: italic;
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.about-me, .project {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.about-me h1, .project h1 {
+  color: rgba(220,220,220,1);
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0;
+  padding-bottom: 0.25em;
+  padding-top: 1em;
+}
+
+.about-me p, .project p {
+  color: rgba(145,145,145,1);
+  font-size: 1em;
+  line-height: 1.75em;
+  margin: 0;
+  padding: 0.25em 0em;
+}
+
+.about-me a {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.about-me a:visited {
+  text-decoration: none;
+}
+
+span.blue-highlight {
+  color: dodgerblue;
+  font-size: 1.5em;
+
+}
+
+span.blue-strikethrough {
+  color: blue;
+  text-decoration:line-through;
+  font-size: 1.5em;
+  opacity: 0.75;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer li {
+  list-style: none;
+  margin: 1em;
+}
+
+footer li img {
+  width: 90px;
+  height: 90px;
+  opacity: 0.5;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+footer li img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.15, 1.15) ;
+	-moz-transform: scale(1.15, 1.15) ;
+	transform: scale(1.15, 1.15) ;
+}
