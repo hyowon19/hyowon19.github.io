@@ -8,11 +8,12 @@ html, body {
 }
 
 header {
+  margin-top: 50px;
   text-align: middle;
   width: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .menu {
@@ -21,12 +22,83 @@ header {
   /* align-items: center; */
   justify-content: space-around;
   width: 85%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .menu--item {
+  text-align: center;
+  /* margin: 0 auto; */
+  width: 100%;
   font-size: 1.5rem;
   color: rgba(255,255,255, 0.75);
+  cursor: pointer;
+  /* border-bottom: 1px solid transparent; */
+  position: relative;
+}
+
+.menu--item:before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  /* right: 0px; */
+  height: 0px;
+  border-bottom: 1px solid transparent;
+  bottom: -5px;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.25s ease-in;
+  transition: transform 0.25s ease-in;
+}
+
+.menu--item:hover:before {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+  border-bottom: 1px solid dodgerblue;
+}
+
+.module {
+  display: flex;
+  /* justify-content: center; */
+  /* text-align: middle; */
+  /* flex-direction: column; */
+  margin: 0 auto;
+  opacity: 1;
+  visibility: visible;
+  width: 85%;
+  border: 1px solid blue;
+}
+
+.module__hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio {
+
+}
+
+.portfolio--list {
+
+}
+
+.portfolio--item {
+
+}
+
+.portfolio--item--title {
+
+}
+
+.portfolio--item--img {
+
+}
+
+.portfolio--item--text {
+
 }
 
 .project-list {
@@ -130,7 +202,7 @@ footer {
   justify-content: center;
 }
 
-footer li {
+/* footer li {
   list-style: none;
   margin: 1em;
 }
@@ -147,6 +219,37 @@ footer li img {
 }
 
 footer li img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.15, 1.15) ;
+	-moz-transform: scale(1.15, 1.15) ;
+	transform: scale(1.15, 1.15) ;
+} */
+
+.contact {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact li {
+  list-style: none;
+  margin: 1em;
+}
+
+.contact li img {
+  width: 90px;
+  height: 90px;
+  opacity: 0.5;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.contact li img:hover {
   opacity: 1;
   -webkit-transform: scale(1.15, 1.15) ;
 	-moz-transform: scale(1.15, 1.15) ;
