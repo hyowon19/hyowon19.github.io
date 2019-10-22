@@ -1,6 +1,32 @@
-body {
-  background-color: rgba(20,20,20,1);
+
+html, body {
+  background-color: rgba(65,65,65,1);
+  /* background-color: rgba(20,20,20,1); */
   font-family: 'Open Sans', Arial;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  text-align: middle;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-around;
+  width: 85%;
+  border: 1px solid blue;
+}
+
+.menu--item {
+  font-size: 1.5rem;
+  color: rgba(255,255,255, 0.75);
 }
 
 .project-list {
@@ -47,49 +73,53 @@ img.my-work-image {
   font-weight: 300;
 }
 
-.about-me, .project {
+.main {
   margin: 0 auto;
   width: 80%;
   text-align: center;
   margin-bottom: 2em;
 }
 
-.about-me h1, .project h1 {
+.about {
+
+}
+
+.about h1, .main h1 {
   color: rgba(220,220,220,1);
-  font-size: 2em;
+  font-size: 1.75em;
   font-weight: 300;
   margin: 0;
   padding-bottom: 0.25em;
   padding-top: 1em;
 }
 
-.about-me p, .project p {
+.about p, .main p {
   color: rgba(145,145,145,1);
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 1.75em;
   margin: 0;
   padding: 0.25em 0em;
 }
 
-.about-me a {
+.about a {
   text-decoration: none;
   color: dodgerblue;
 }
 
-.about-me a:visited {
+.about a:visited {
   text-decoration: none;
 }
 
-span.blue-highlight {
+.blue-highlight {
   color: dodgerblue;
-  font-size: 1.5em;
+  font-size: 1.2em;
 
 }
 
-span.blue-strikethrough {
+.blue-strikethrough {
   color: blue;
   text-decoration:line-through;
-  font-size: 1.5em;
+  font-size: 1.25em;
   opacity: 0.75;
 }
 
