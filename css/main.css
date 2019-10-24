@@ -13,6 +13,7 @@ header {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 75px;
   /* border: 1px solid red; */
 }
 
@@ -64,6 +65,7 @@ header {
   /* justify-content: center; */
   /* text-align: middle; */
   /* flex-direction: column; */
+  flex-direction: column;
   margin: 0 auto;
   opacity: 1;
   visibility: visible;
@@ -75,6 +77,31 @@ header {
   display: none;
   opacity: 0;
   visibility: hidden;
+}
+
+
+
+.module--top {
+
+}
+
+.module--title {
+  font-size: 1.5rem;
+  /* padding: */
+  /* width: 85%;
+  margin: 0 auto; */
+}
+
+.module--collapse {
+
+}
+
+.module--collapse__on {
+  
+}
+
+.module--body {
+
 }
 
 .portfolio {
