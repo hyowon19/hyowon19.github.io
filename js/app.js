@@ -17,4 +17,18 @@ for (var i = 0; i < accordion.length; i++) {
       module.style.maxHeight = module.scrollHeight + 'px';
     }
   });
+
+  accordion[i].addEventListener("mouseover", function() {
+    var title = this.children[0];
+    var subtitle = title.children[0];
+    title.style.color = 'rgba(225,225,225,0.25)';
+    subtitle.style.opacity = '1';
+  });
+
+  accordion[i].addEventListener("mouseout", function() {
+    var title2 = this.children[0];
+    var subtitle2 = title2.children[0];
+    title2.style.color = 'rgba(225,225,225,0.85)';
+    subtitle2.style.opacity = '0.25';
+  });
 }
