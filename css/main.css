@@ -9,13 +9,13 @@ html, body {
 
 header {
   padding: 25px 0px;
-  text-align: middle;
+  /* text-align: middle; */
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   /* background-color: rgba(65,65,65,1); */
-  background-color: rgba(20,20,20,1);
+  background-color: rgba(40,40,40,1);
   z-index: 1;
   position: fixed;
   top: 0px;
@@ -29,12 +29,13 @@ header {
 }
 
 .menu--item {
+  text-decoration: none;
   text-align: center;
   width: 85%;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 100;
   color: rgba(255,255,255, 1);
-  opacity: 0.5;
+  opacity: 0.35;
   cursor: pointer;
   position: relative;
   -webkit-transition: -webkit-opacity 0.2s ease-in;
@@ -86,11 +87,21 @@ header {
   margin-top: 85px;
 }
 
+.module__last {
+  margin-bottom: 75px;
+}
+
 .module__hidden {
+  display: block;
+  padding-top: 85px;
+  margin-top: -85px;
+}
+
+/* .module__hidden {
   display: none;
   opacity: 0;
   visibility: hidden;
-}
+} */
 
 .module--top {
   display: flex;
@@ -168,7 +179,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 0px 15px;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
 .module--list--main {
@@ -180,8 +191,8 @@ header {
 }
 
 .module--list--img {
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
   object-fit: cover;
   opacity: 0.7;
   -webkit-transition: all 0.25s ease;
@@ -206,13 +217,13 @@ header {
 }
 
 .module--list--title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: white;
   opacity: 0.75;
 }
 
 .module--list--subtitle {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: dodgerblue;
   font-weight: 100;
   margin-top: 3px;
@@ -326,19 +337,30 @@ footer {
 .contact {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
+  /* margin: 175px 0px 150px 0px; */
+  /* padding-top: 100px;
+  /* margin-bottom: 50px; */
+  margin-top: 50px;
+  margin-bottom: 3000px;
+}
+
+.contact--social li {
+  list-style: none;
+  margin: 2em;
+}
+
+.contact--social {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
-.contact li {
-  list-style: none;
-  margin: 1em;
-}
-
-.contact li img {
-  width: 90px;
-  height: 90px;
+.contact--social li img {
+  width: 150px;
+  height: 150px;
   opacity: 0.5;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;

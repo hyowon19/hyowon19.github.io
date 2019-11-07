@@ -14,12 +14,14 @@
   <body>
     <header>
       <nav class="menu">
-        <a class="menu--item">Portfolio</a>
-        <a class="menu--item">About</a>
-        <a class="menu--item">Contact</a>
+        <a href="#portfolio" class="menu--item">Portfolio</a>
+        <!-- <a class="menu--item">About</a> -->
+        <a href="#contact" class="menu--item">Contact</a>
       </nav>
     </header>
+
     <section class="module module__first">
+      <div id ="portfolio" class="module__hidden"></div>
       <div class="module--top">
         <div class="module--top--info">
           <div class="module--title">Web Development</div>
@@ -104,7 +106,7 @@
       </div>
     </section>
 
-    <section class="module">
+    <section class="module module__last">
       <div class="module--top">
         <div class="module--top--info">
           <div class="module--title">Graphic Artist</div>
@@ -112,7 +114,55 @@
         </div>
         <div class="module--accordion"></div>
       </div>
+
       <div class="module--body">
+        <div class="module--list">
+
+          <div class="module--list--item">
+            <a href ="https://botabota.ca/en/" target="_blank" class="module--list--main">
+              <img class="module--list--img" src="./img/botabota.png" alt=""/>
+            </a>
+            <div class="module--list--info">
+              <div class="module--list--title">Bota Bota</div>
+              <div class="module--list--subtitle">html5 | css3 | js</div>
+            </div>
+          </div>
+
+          <div class="module--list--item">
+            <a href ="https://www.dalet.com" target="_blank" class="module--list--main">
+              <img class="module--list--img" src="./img/dalet.png"/>
+            </a>
+            <div class="module--list--info">
+              <div class="module--list--title">Dalet</div>
+              <div class="module--list--subtitle">html5 | css3 | js | drupal | php</div>
+            </div>
+          </div>
+
+          <div class="module--list--item">
+            <a href ="https://transition.filion.ca/fr/login" target="_blank" class="module--list--main">
+              <img class="module--list--img" src="./img/andrefilion.png"/>
+            </a>
+            <div class="module--list--info">
+              <div class="module--list--title">Andrefilion - Cilent Center</div>
+              <div class="module--list--subtitle">html5 | css3 | js | twig | php</div>
+            </div>
+          </div>
+
+          <div class="module--list--item">
+            <a href ="https://github.com/hyowon19/FH_Project" target="_blank" class="module--list--main">
+              <img class="module--list--img" src="./img/fh-project-reactjs.png"/>
+            </a>
+            <div class="module--list--info">
+              <div class="module--list--title">FH Project</div>
+              <div class="module--list--subtitle">html5 | css3 | reactjs</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- <div class="module--body">
         <div class="project-list">
           <div class="my-work">
             <div class="my-work-title">Dragon Bowl Vector</div>
@@ -124,26 +174,32 @@
             <a href="./img/dragon-vector.jpg" target="_blank"><img class="my-work-image" src="./img/dragon-vector.jpg" alt=""/></a>
             <div class="my-work-description">illustrator</div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
     </section>
 
+    <div id ="contact" class="module__hidden"></div>
     <div class="contact">
-      <li><a href="https://www.linkedin.com/in/victorwong1901/"><img src="./img/linkedin-icon.png"/></a></li>
-      <li><a href="https://github.com/hyowon19"><img src="./img/github-icon.png"/></a></li>
-      <li><a title="mailto:vj1901@hotmail.com" href="mailto:vj1901@hotmail.com"><img src="./img/mail-icon.png"/></a></li>
+      <div class="contact--social">
+        <li><a href="https://www.linkedin.com/in/victorwong1901/"><img src="./img/linkedin-icon.png"/></a></li>
+        <li><a href="https://github.com/hyowon19"><img src="./img/github-icon.png"/></a></li>
+        <li><a title="mailto:vj1901@hotmail.com" href="mailto:vj1901@hotmail.com"><img src="./img/mail-icon.png"/></a></li>
+      </div>
+      <div class="contact--info"></div>
     </div>
 
-    <div class="about">
+    
+
+    <!-- <div class="about">
       <h1>Profile</h1>
       <p>NAME <span class="blue-highlight">Victor Wong</span></p>
       <p>My name is <span class="blue-highlight">Victor Wong</span> and I am a <span class="blue-highlight">Web Developper</span>, former <span class="blue-strikethrough">Graphic Designer</span> and I live in <span class="blue-highlight">Montreal<span>.</p>
       <h1>Why hire me?</h1>
       <p>A <span class="blue-highlight">hard-working</span> individual with a <span class="blue-highlight">passion</span> for web development packaged with some graphic design npms who is a <span class="blue-highlight">team player</span> and able to work independently.  Also a graduate of <span class="blue-highlight"><a href="https://www.decodemtl.com/">DecodeMTL</a></span>, a follower of all things <span class="blue-highlight">K-Pop</span>, a lover of <span class="blue-highlight">Japan</span>, and a fanatic of <span class="blue-highlight">badminton</span>.</p>
       <h1> </h1>
-    </div>
+    </div> -->
 
     <script src="./js/app.js"></script>
   </body>
