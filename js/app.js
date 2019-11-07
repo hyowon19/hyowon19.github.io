@@ -18,16 +18,18 @@ for (var i = 0; i < accordion.length; i++) {
     }
   });
 
+  // Event listener for mouseover on accordion element
   accordion[i].addEventListener("mouseover", function() {
-    var title = this.children[0];
-    var subtitle = title.children[0];
+    var title = this.children[0].children[0];
+    var subtitle = this.children[0].children[1];
     title.style.color = 'rgba(225,225,225,0.25)';
     subtitle.style.opacity = '1';
   });
 
+  // Event listener for mouseout on accordion element
   accordion[i].addEventListener("mouseout", function() {
-    var title2 = this.children[0];
-    var subtitle2 = title2.children[0];
+    var title2 = this.children[0].children[0];
+    var subtitle2 = this.children[0].children[1];
     title2.style.color = 'rgba(225,225,225,0.85)';
     subtitle2.style.opacity = '0.25';
   });
