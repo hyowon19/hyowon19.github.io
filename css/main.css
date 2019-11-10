@@ -247,7 +247,7 @@ footer {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .contact--social li {
@@ -281,15 +281,15 @@ footer {
 }
 
 .contact--info {
-  margin-top: 25px;
+  margin-top: 75px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 75%;
+  width: 70%;
 }
 
 .contact--info--box {
-  padding: 15px 25px;
+  padding: 15px 30px;
   margin: 10px 15px;
   border: 3px solid white;
   border-radius: 30px;
