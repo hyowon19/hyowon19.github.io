@@ -1,6 +1,5 @@
 
 html, body {
-  /* background-color: rgba(65,65,65,1); */
   background-color: rgba(20,20,20,1);
   font-family: 'Open Sans', Arial;
   margin: 0px;
@@ -9,12 +8,9 @@ html, body {
 
 header {
   padding: 25px 0px;
-  /* text-align: middle; */
   width: 100%;
   display: flex;
   justify-content: center;
-  /* margin-bottom: 25px; */
-  /* background-color: rgba(65,65,65,1); */
   background-color: rgba(40,40,40,1);
   z-index: 1;
   position: fixed;
@@ -214,6 +210,7 @@ header {
   display: flex;
   flex-direction: column;
   margin-top: 5px;
+  cursor: default;
 }
 
 .module--list--title {
@@ -247,7 +244,7 @@ footer {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  margin-bottom: 3000px;
+  margin-bottom: 300px;
 }
 
 .contact--social li {
@@ -297,4 +294,32 @@ footer {
   color: white;
   font-style: italic;
   cursor: default;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.contact--info--box:hover {
+  color: dodgerblue;
+  border: 3px solid rgba(30,144,255,0.25);
+  -webkit-transform: scale(1.15, 1.15) ;
+	-moz-transform: scale(1.15, 1.15) ;
+	transform: scale(1.15, 1.15) ;
+}
+
+.contact--info--box__red:hover {
+  color: rgba(186, 11, 11, 1);
+  border: 3px solid rgba(186, 11, 11, 0.25);
+}
+
+.contact--info--box__orange:hover {
+  color: rgba(255, 124, 0, 1);
+  border: 3px solid rgba(255, 124, 0, 0.25);
+}
+
+.contact--info--box__green:hover {
+  color: rgba(0, 130, 40, 1);
+  border: 3px solid rgba(0, 130, 40, 0.25);
 }

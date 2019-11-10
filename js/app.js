@@ -34,3 +34,12 @@ for (var i = 0; i < accordion.length; i++) {
     subtitle2.style.opacity = '0.25';
   });
 }
+
+// On page load, shuffle div elements randomly
+(function() {
+  var skills = document.querySelector('#skills');
+
+  for(var i = skills.children.length; i >= 0; i--) {
+    skills.appendChild(skills.children[Math.random() * i | 0]);
+  }
+}) ();
