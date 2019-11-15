@@ -108,6 +108,15 @@ header {
 
 .module--top--info {
   display: flex;
+  flex-direction: row;
+}
+
+.module--top:hover .module--title {
+  color: rgba(255,255,255,0.25);
+}
+
+.module--top:hover .module--subtitle {
+  opacity: 1;
 }
 
 .module--title {
@@ -124,18 +133,33 @@ header {
 
 .module--subtitle {
   font-size: 1.5rem;
-  margin-left: 7px;
+  margin-left: 25px;
   color: dodgerblue;
   opacity: 0.25;
   font-weight: 100;
   text-transform: none;
   -webkit-transition: -webkit-opacity 0.2s ease-in;
   transition: opacity 0.2s ease-in;
+  position: relative;
+}
+
+.module--subtitle:before {
+  content:'|';
+  position: absolute;
+  left: -18px;
+}
+
+/* .module--title__hover:hover {
+  color: rgba(255,255,255,0.25);
+}
+
+.module--subtitle__hover:hover {
+  opacity: 1;
 }
 
 .module--accordion {
 
-}
+} */
 
 .module--accordion::after {
   content: '\002B';
@@ -223,7 +247,6 @@ header {
   font-weight: 100;
   margin-top: 3px;
   opacity: 0.75;
-
 }
 
 footer {
