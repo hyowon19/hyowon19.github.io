@@ -149,18 +149,6 @@ header {
   left: -18px;
 }
 
-/* .module--title__hover:hover {
-  color: rgba(255,255,255,0.25);
-}
-
-.module--subtitle__hover:hover {
-  opacity: 1;
-}
-
-.module--accordion {
-
-} */
-
 .module--accordion::after {
   content: '\002B';
   font-size: 33px;
