@@ -26,3 +26,25 @@ for (var i = 0; i < accordion.length; i++) {
     skills.appendChild(skills.children[Math.random() * i | 0]);
   }
 }) ();
+
+// console.log('hey');
+
+var modalTest = document.getElementsByClassName('modal--container');
+
+for(var i=0; i < modalTest.length; i++) {
+  modalTest[i].addEventListener('click', function() {
+    console.log(this);
+    // console.log(this.nextElementSibling.nextElementSibling).classList.add('modal--open');
+    this.nextElementSibling.nextElementSibling.classList.add('modal--open');
+    console.log(this.nextElementSibling.nextElementSibling);
+  });
+}
+
+var modalClose = document.querySelector('.modal__close');
+// console.log(modalClose)
+
+modalClose.addEventListener('click', function() {
+  // console.log('i got clicked and i want to close this window');
+  // console.log(this);
+  this.parentNode.classList.remove('modal--open');
+})

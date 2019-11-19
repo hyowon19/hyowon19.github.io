@@ -337,3 +337,38 @@ footer {
   color: rgba(0, 130, 40, 1);
   border: 3px solid rgba(0, 130, 40, 0.25);
 }
+
+.module--list--modal {
+  display: none;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.modal__close {
+  /* position: relative; */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modal__close:after {
+  position: fixed
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 100;
+  content: '\2715';
+  color: black;
+  cursor: pointer;
+}
+
+.modal--open {
+  display: block;
+}
