@@ -338,6 +338,9 @@ footer {
   border: 3px solid rgba(0, 130, 40, 0.25);
 }
 
+.modal--container {
+  cursor: pointer;
+}
 .module--list--modal {
   display: none;
   z-index: 100;
@@ -351,7 +354,6 @@ footer {
 }
 
 .modal__close {
-  /* position: relative; */
   position: absolute;
   top: 0;
   right: 0;
@@ -369,6 +371,6 @@ footer {
   cursor: pointer;
 }
 
-.modal--open {
+.modal__open {
   display: block;
 }

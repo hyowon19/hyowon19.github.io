@@ -27,24 +27,19 @@ for (var i = 0; i < accordion.length; i++) {
   }
 }) ();
 
-// console.log('hey');
 
-var modalTest = document.getElementsByClassName('modal--container');
-
-for(var i=0; i < modalTest.length; i++) {
-  modalTest[i].addEventListener('click', function() {
-    console.log(this);
-    // console.log(this.nextElementSibling.nextElementSibling).classList.add('modal--open');
-    this.nextElementSibling.nextElementSibling.classList.add('modal--open');
-    console.log(this.nextElementSibling.nextElementSibling);
+// Modal Logic
+var modalContainer = document.getElementsByClassName('modal--container');
+// Setting click event to each item in this section to show its modal element
+for(var i = 0; i < modalContainer.length; i++) {
+  modalContainer[i].addEventListener('click', function() {
+    this.nextElementSibling.nextElementSibling.classList.add('modal__open');
   });
 }
 
-var modalClose = document.querySelector('.modal__close');
-// console.log(modalClose)
-
-modalClose.addEventListener('click', function() {
-  // console.log('i got clicked and i want to close this window');
-  // console.log(this);
-  this.parentNode.classList.remove('modal--open');
-})
+// On click event close the modal
+for(var i = 0; i < modalClose.length; i++) {
+  modalClose[i].addEventListener('click', function() {
+    this.parentNode.classList.remove('modal__open');
+  })
+}
