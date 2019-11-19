@@ -37,6 +37,7 @@ for(var i = 0; i < modalContainer.length; i++) {
   });
 }
 
+var modalClose = document.getElementsByClassName('modal__close');
 // On click event close the modal
 for(var i = 0; i < modalClose.length; i++) {
   modalClose[i].addEventListener('click', function() {
