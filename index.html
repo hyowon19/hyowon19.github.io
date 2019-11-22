@@ -140,11 +140,43 @@
             </div>
             <div class="module--list--modal">
               <div class="modal__close"></div>
-              <div class="">hello, i am the highest element right now</div>
+              <div class="modal--content">
+                <div class="modal--info">
+                  <div class="modal--info--title">Form JS Verification</div>
+                  <div class="modal--info--text">This is a sample form verified client-side with javascript.  Nothing is actually sent.</div>
+                </div>
+                <form action=""class="modal--form">
+                  <div class="form--block">
+                    <input type="text" placeholder="eg. John Doe"/>
+                    <label>Name</label>
+                  </div>
+                  <div class="form--block">
+                    <input type="email" placeholder="you@example.com"/>
+                    <label>Email</label>
+                  </div>
+                  <div class="form--block">
+                    <input type="password" placeholder="minimum 8 characters, "/>
+                    <label>Password</label>
+                  </div>
+                  <div class="form--block">
+                    <input type="password" placeholder="must match with password"/>
+                    <label>Confirm Password</label>
+                  </div>
+                  <div class="form--block">
+                    <textarea placeholder="Enter your message"></textarea>
+                    <label>Message</label>
+                  </div>
+                  <div class="form--buttons">
+                    <button class="form--button hvr-push">Reset</button>
+                    <button class="form--button hvr-push" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </section>
 
     <section class="module module__last">
@@ -207,9 +239,7 @@
       </div>
     </div>
 
-    <footer>
-      Hyowon @<script>document.write(new Date().getFullYear());</script>.  All Rights Reserved.  Maybe.
-    </footer>
+    <footer>Hyowon @<script>document.write(new Date().getFullYear());</script>.  All Rights Reserved.  Maybe.</footer>
 
     <script src="./js/app.js"></script>
   </body>

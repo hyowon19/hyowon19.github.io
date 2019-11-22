@@ -342,8 +342,10 @@ footer {
   cursor: pointer;
 }
 .module--list--modal {
-  display: none;
-  z-index: 100;
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  z-index: -100;
   position: fixed;
   top: 0;
   left: 0;
@@ -351,6 +353,12 @@ footer {
   width: 100%;
   background-color: white;
   color: black;
+  transform: scale(0.25);
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 }
 
 .modal__close {
@@ -372,5 +380,119 @@ footer {
 }
 
 .modal__open {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  z-index: 100;
+  transform: scale(1);
+}
+
+.modal--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.modal--form {
+  width: 90%;
+  max-width: 500px;
+  padding: 15px;
+}
+
+.modal--info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.modal--info--title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.modal--info--text {
+  font-weight: 100;
+}
+
+.form--block {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form--block label {
+  padding-left: 3px;
+  margin-bottom: 2px;
+  font-size: 1rem;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.form--block input, .form--block textarea {
+  padding: 7px 5px;
+  border: 3px solid rgba(0,0,0,0.4);
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-family: 'Open Sans', Arial;
+}
+
+.form--block textarea {
+  resize: none;
+}
+.form--block input::placeholder, .form--block textarea::placeholder {
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
+.form--block input:focus, .form--block textarea:focus {
+  border: 3px solid rgba(0,0,0,85);
+}
+
+.form--block input:focus + label, .form--block textarea:focus + label {
+  transform: translateX(7px);
+}
+
+.form--buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form--button {
+  border: 2px solid black;
+  background: white;
+  outline: none;
+  color: black;
+  padding: 10px 15px;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.form--button:hover {
+  background: black;
+  color: white;
+  -webkit-transform: translateY(5px) scale(1.1) ;
+  -moz-transform: translateY(5px) scale(1.1) ;
+  transform: translateY(-5px) scale(1.1) ;
 }
