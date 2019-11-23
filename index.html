@@ -147,7 +147,7 @@
                 </div>
                 <form action=""class="modal--form">
                   <div class="form--block">
-                    <input type="text" placeholder="eg. John Doe"/>
+                    <input type="text" placeholder="John Doe"/>
                     <label>Name</label>
                   </div>
                   <div class="form--block">
@@ -163,12 +163,13 @@
                     <label>Confirm Password</label>
                   </div>
                   <div class="form--block">
-                    <textarea placeholder="Enter your message"></textarea>
+                    <div class="form--block--textCounter" id="charDisplay">hey</div>
+                    <textarea id="formMessage" placeholder="Enter your message" rows="4" maxlength="200"></textarea>
                     <label>Message</label>
                   </div>
                   <div class="form--buttons">
-                    <button class="form--button hvr-push">Reset</button>
-                    <button class="form--button hvr-push" type="submit">Submit</button>
+                    <button class="form--button">Reset</button>
+                    <button class="form--button" type="submit">Submit</button>
                   </div>
                 </form>
               </div>
