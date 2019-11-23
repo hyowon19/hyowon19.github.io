@@ -45,23 +45,15 @@ for(let i = 0; i < modalClose.length; i++) {
   })
 }
 
-
+// Character Remaining Display Logic
 const charDisplay = document.querySelector('#charDisplay');
 const formMessage = document.querySelector('#formMessage');
-const charMax = 200;
+const charMax = formMessage.getAttribute('maxlength');
 
-charDisplay.innerHTML = charMax; // initial value of message box
+charDisplay.innerHTML = charMax; // set initial value of message box
 
 // logic to display remaining characters in textbox
-function countChar() {
+formMessage.addEventListener('input', () => {
   const charCount = formMessage.textLength;
-  // charDisplay.style.transform = "translateY(3px)";
   charDisplay.innerHTML = charMax - charCount;
-  // setTimeout(function() {
-  //   charDisplay.style.transform = "translateY(-3px)";
-  // },100)
-  // charDisplay.style.transform = "translateY(5px)";
-}
-
-formMessage.addEventListener('keyup', countChar.bind());
-formMessage.addEventListener('change', countChar.bind());
+})
