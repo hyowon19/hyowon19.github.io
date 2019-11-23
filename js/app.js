@@ -22,7 +22,7 @@ for (let i = 0; i < accordion.length; i++) {
 // On page load, shuffle div elements randomly in contact section
 (function() {
   const skills = document.querySelector('#skills');
-  for(var i = skills.children.length; i >= 0; i--) {
+  for(let i = skills.children.length; i >= 0; i--) {
     skills.appendChild(skills.children[Math.random() * i | 0]);
   }
 }) ();
@@ -56,4 +56,19 @@ charDisplay.innerHTML = charMax; // set initial value of message box
 formMessage.addEventListener('input', () => {
   const charCount = formMessage.textLength;
   charDisplay.innerHTML = charMax - charCount;
+})
+
+// Form Reset Button logic
+const formReset = document.querySelector('#formReset');
+const formName = document.querySelector('#formName');
+const formEmail = document.querySelector('#formEmail');
+const formPass = document.querySelector('#formPass');
+const formConfirmPass = document.querySelector('#formConfirmPass');
+
+formReset.addEventListener('click', () => {
+  formName.value = '';
+  formEmail.value = '';
+  formPass.value = '';
+  formConfirmPass.value = '';
+  formMessage.value = '';
 })
