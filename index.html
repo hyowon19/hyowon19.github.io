@@ -145,21 +145,21 @@
                   <div class="modal--info--title">Form JS Verification</div>
                   <div class="modal--info--text">This is a sample form verified client-side with javascript.  Nothing is actually sent.</div>
                 </div>
-                <form action=""class="modal--form">
+                <form action="example.html"class="modal--form">
                   <div class="form--block">
                     <input id="formName" type="text" placeholder="Bob Smith"/>
-                    <label>Name</label>
+                    <label>Name(required)</label>
                   </div>
                   <div class="form--block">
                     <input id="formEmail" type="email" placeholder="you@example.com"/>
                     <label>Email</label>
                   </div>
                   <div class="form--block">
-                    <input id="formPass" type="password" placeholder="minimum 8 characters, "/>
+                    <input id="formPass" type="password" placeholder="minimum 8 characters, " minlength="8" maxlength="16"/>
                     <label>Password</label>
                   </div>
                   <div class="form--block">
-                    <input id="formConfirmPass" type="password" placeholder="must match with password"/>
+                    <input id="formConfirmPass" type="password" placeholder="must match with password" minlength="8" maxlength="16"/>
                     <label>Confirm Password</label>
                   </div>
                   <div class="form--block">
@@ -169,7 +169,7 @@
                   </div>
                   <div class="form--buttons">
                     <button class="form--button" id="formReset">Reset</button>
-                    <button class="form--button" type="submit">Submit</button>
+                    <button class="form--button" type="submit" id="formSubmit">Submit</button>
                   </div>
                 </form>
               </div>

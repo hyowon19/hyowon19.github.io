@@ -65,10 +65,41 @@ const formEmail = document.querySelector('#formEmail');
 const formPass = document.querySelector('#formPass');
 const formConfirmPass = document.querySelector('#formConfirmPass');
 
-formReset.addEventListener('click', () => {
+formReset.addEventListener('click', event => {
+  event.preventDefault();
   formName.value = '';
   formEmail.value = '';
   formPass.value = '';
   formConfirmPass.value = '';
   formMessage.value = '';
+  event.target.blur();
+})
+
+function validateName(str) {
+  var textRegex = /^[A-zÀ-ÿ-_.' ]*$/;
+  if (str.value.length === 0) {
+    return false;
+  } else {
+    return textRegex.test(str.value.trim());
+  }
+}
+
+function validateEmail(str) {
+
+}
+
+function validateCreatePass(str) {
+
+}
+
+function validateConfirmPass(str) {
+
+}
+
+const formSubmit = document.querySelector('#formSubmit');
+
+formSubmit.addEventListener('click', event => {
+  event.preventDefault();
+  console.log('pressed');
+  event.target.blur();
 })
