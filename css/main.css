@@ -527,6 +527,7 @@ footer {
   transition: visibility 0.25s, opacity 0.25s;
 }
 
+.form--error__active {
   visibility: visible;
   opacity: 0.9;
 }

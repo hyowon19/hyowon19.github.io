@@ -125,6 +125,7 @@ formSubmit.addEventListener('click', event => {
       errName.innerHTML = '';
       errName.classList.remove('form--error__active');
     } else { // name is invalid
+      errName.innerHTML = 'Invalid. Pleas use text only.';
       errName.classList.add('form--error__active');
     }
   } else { // field is empty
@@ -155,6 +156,7 @@ formSubmit.addEventListener('click', event => {
         errPass.classList.add('form--error__active');
       }
     } else { // password is invalid
+      errPass.innerHTML = 'Need upper and lowercase letter, number, and symbol';
       errPass.classList.add('form--error__active');
     }
   } else { // field is empty
@@ -172,8 +174,10 @@ formSubmit.addEventListener('click', event => {
         errConfirmPass.classList.add('form--error__active');
       }
     } else { // confirm password is invalid
+      errConfirmPass.innerHTML = 'Need upper and lowercase letter, number, and symbol';
       errConfirmPass.classList.add('form--error__active');
     }
+  } else { // field is empty
     errConfirmPass.innerHTML = 'This field is required';
     errConfirmPass.classList.add('form--error__active');
   }
