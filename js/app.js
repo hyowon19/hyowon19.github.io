@@ -65,6 +65,11 @@ const formEmail = document.querySelector('#formEmail');
 const formPass = document.querySelector('#formPass');
 const formConfirmPass = document.querySelector('#formConfirmPass');
 
+const errName = document.querySelector('#errName');
+const errEmail = document.querySelector('#errEmail');
+const errPass = document.querySelector('#errPass');
+const errConfirmPass = document.querySelector('#errConfirmPass');
+
 formReset.addEventListener('click', event => {
   event.preventDefault();
   formName.value = '';
@@ -72,34 +77,105 @@ formReset.addEventListener('click', event => {
   formPass.value = '';
   formConfirmPass.value = '';
   formMessage.value = '';
+  errName.innerHTML = '';
+  errEmail.innerHTML = '';
+  errPass.innerHTML = '';
+  errConfirmPass.innerHTML = '';
+  errName.classList.remove('form--error__active');
+  errEmail.classList.remove('form--error__active');
+  errPass.classList.remove('form--error__active');
+  errConfirmPass.classList.remove('form--error__active');
   event.target.blur();
 })
 
-function validateName(str) {
-  var textRegex = /^[A-zÀ-ÿ-_.' ]*$/;
-  if (str.value.length === 0) {
-    return false;
-  } else {
-    return textRegex.test(str.value.trim());
-  }
+// Checks if form field is empty
+function validateField(str) {
+  return str.value.length === 0 ? false : true;
 }
 
-function validateEmail(str) {
+// Checks if name is valid
+function validateName(str) {
+  const textReg = new RegExp(/^[A-zÀ-ÿ-_.' ]*$/);
+  return textReg.test(str.value.trim());
+}
 
+// Checks if email is valid
+function validateEmail(str) {
+  const emailReg = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  return emailReg.test(str.value);
 }
 
 function validateCreatePass(str) {
-
+  const passReg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{8,12}$)");
+  return passReg.test(str.value);
 }
 
 function validateConfirmPass(str) {
-
+  const passConfirmReg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(.{8,12}$)");
+  return passConfirmReg.test(str.value);
 }
 
 const formSubmit = document.querySelector('#formSubmit');
 
 formSubmit.addEventListener('click', event => {
   event.preventDefault();
-  console.log('pressed');
+  // checks Name field
+  if (validateField(formName)) { // field is not empty
+    if (validateName(formName)) { // name is valid
+      errName.innerHTML = '';
+      errName.classList.remove('form--error__active');
+    } else { // name is invalid
+      errName.classList.add('form--error__active');
+    }
+  } else { // field is empty
+    errName.innerHTML = 'This field is required.';
+    errName.classList.add('form--error__active');
+  }
+  // checks Email field
+  if (validateField(formEmail)) { // field is not empty
+    if (validateEmail(formEmail)) { // email is valid
+      errEmail.innerHTMl = '';
+      errEmail.classList.remove('form--error__active');
+    } else { // email is invalid
+      errEmail.innerHTML = 'Invalid. Please enter a correct email.';
+      errEmail.classList.add('form--error__active');
+    }
+  } else { // field is empty
+    errEmail.innerHTML = 'This field is required.'
+    errEmail.classList.add('form--error__active');
+  }
+  // checks password field
+  if (validateField(formPass)) { // field is not empty
+    if (validateCreatePass(formPass)){ // password is valid
+      if (formPass.value === formConfirmPass.value) { // password matches with confirm passowrd
+        errPass.innerHTML = '';
+        errPass.classList.remove('form--error__active');
+      } else { // passwords do not match
+        errPass.innerHTML = 'The passwords do not match.';
+        errPass.classList.add('form--error__active');
+      }
+    } else { // password is invalid
+      errPass.classList.add('form--error__active');
+    }
+  } else { // field is empty
+    errPass.innerHTML = 'This field is required.';
+    errPass.classList.add('form--error__active');
+  }
+  // checks confirm password field
+  if (validateField(formConfirmPass)) { // field is not empty
+    if (validateConfirmPass(formConfirmPass)){ // confirm password is valid
+      if (formConfirmPass.value === formPass.value) { // confirm password matches with password
+        errConfirmPass.innerHTML = '';
+        errConfirmPass.classList.remove('form--error__active');
+      } else { // passwords do not match
+        errConfirmPass.innerHTML = 'The passwords do not match.';
+        errConfirmPass.classList.add('form--error__active');
+      }
+    } else { // confirm password is invalid
+      errConfirmPass.classList.add('form--error__active');
+    }
+    errConfirmPass.innerHTML = 'This field is required';
+    errConfirmPass.classList.add('form--error__active');
+  }
   event.target.blur();
 })

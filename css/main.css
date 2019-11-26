@@ -422,7 +422,7 @@ footer {
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 .form--block label {
@@ -509,4 +509,24 @@ footer {
   -webkit-transform: translateY(5px);
   -moz-transform: translateY(5px);
   transform: translateY(-5px);
+}
+
+.form--error {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: red;
+  visibility: hidden;
+  opacity: 0;
+  height: 15px;
+  -webkit-transition: visibility 0.25s, opacity 0.25s;
+  -moz-transition: visibility 0.25s, opacity 0.25s;
+  -ms-transition: visibility 0.25s, opacity 0.25s;
+  -o-transition: visibility 0.25s, opacity 0.25s;
+  transition: visibility 0.25s, opacity 0.25s;
+}
+
+  visibility: visible;
+  opacity: 0.9;
 }

@@ -147,21 +147,25 @@
                 </div>
                 <form action="example.html"class="modal--form">
                   <div class="form--block">
-                    <input id="formName" type="text" placeholder="Bob Smith"/>
-                    <label>Name(required)</label>
+                    <input id="formName" type="text" placeholder="Bob Smith" required/>
+                    <label>Name(*)</label>
                   </div>
+                  <div class="form--error" id="errName"></div>
                   <div class="form--block">
-                    <input id="formEmail" type="email" placeholder="you@example.com"/>
-                    <label>Email</label>
+                    <input id="formEmail" type="email" placeholder="you@example.com" required/>
+                    <label>Email(*)</label>
                   </div>
+                  <div class="form--error" id="errEmail"></div>
                   <div class="form--block">
-                    <input id="formPass" type="password" placeholder="minimum 8 characters, " minlength="8" maxlength="16"/>
-                    <label>Password</label>
+                    <input id="formPass" type="password" placeholder="8-12 characters,upper/lowercase,number,symbol" minlength="8" maxlength="12" required/>
+                    <label>Password(*)</label>
                   </div>
+                  <div class="form--error" id="errPass"></div>
                   <div class="form--block">
-                    <input id="formConfirmPass" type="password" placeholder="must match with password" minlength="8" maxlength="16"/>
-                    <label>Confirm Password</label>
+                    <input id="formConfirmPass" type="password" placeholder="must match with password" minlength="8" maxlength="12" required/>
+                    <label>Confirm Password(*)</label>
                   </div>
+                  <div class="form--error" id="errConfirmPass"></div>
                   <div class="form--block">
                     <div class="form--block--textCounter" id="charDisplay">hey</div>
                     <textarea id="formMessage" placeholder="Enter your message" rows="4" maxlength="200"></textarea>
