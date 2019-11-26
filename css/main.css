@@ -531,3 +531,30 @@ footer {
   visibility: visible;
   opacity: 0.9;
 }
+
+.form--result {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  color: white;
+  visibility: hidden;
+  opacity: 0;
+  height: 20px;
+  -webkit-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -moz-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -ms-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -o-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+}
+
+.form--result__pass {
+  color: green;
+  visibility: visible;
+  opacity: 1;
+}
+
+.form--result__error {
+  color: red;
+  visibility: visible;
+  opacity: 1;
+}

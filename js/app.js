@@ -85,6 +85,7 @@ formReset.addEventListener('click', event => {
   errEmail.classList.remove('form--error__active');
   errPass.classList.remove('form--error__active');
   errConfirmPass.classList.remove('form--error__active');
+  formResult.classList.remove('form--result__pass', 'form--result__error');
   event.target.blur();
 })
 
@@ -116,16 +117,24 @@ function validateConfirmPass(str) {
 }
 
 const formSubmit = document.querySelector('#formSubmit');
+const formResult = document.querySelector('.form--result');
+
+let isName = false;
+let isEmail = false;
+let isPass = false;
+let isConfirmPass = false;
 
 formSubmit.addEventListener('click', event => {
   event.preventDefault();
+  formResult.classList.remove('form--result__pass', 'form--result__error');
   // checks Name field
   if (validateField(formName)) { // field is not empty
     if (validateName(formName)) { // name is valid
       errName.innerHTML = '';
       errName.classList.remove('form--error__active');
+      isName = true;
     } else { // name is invalid
-      errName.innerHTML = 'Invalid. Pleas use text only.';
+      errName.innerHTML = 'Invalid. Please use text only.';
       errName.classList.add('form--error__active');
     }
   } else { // field is empty
@@ -137,6 +146,7 @@ formSubmit.addEventListener('click', event => {
     if (validateEmail(formEmail)) { // email is valid
       errEmail.innerHTMl = '';
       errEmail.classList.remove('form--error__active');
+      isEmail = true;
     } else { // email is invalid
       errEmail.innerHTML = 'Invalid. Please enter a correct email.';
       errEmail.classList.add('form--error__active');
@@ -151,6 +161,7 @@ formSubmit.addEventListener('click', event => {
       if (formPass.value === formConfirmPass.value) { // password matches with confirm passowrd
         errPass.innerHTML = '';
         errPass.classList.remove('form--error__active');
+        isPass = true;
       } else { // passwords do not match
         errPass.innerHTML = 'The passwords do not match.';
         errPass.classList.add('form--error__active');
@@ -169,6 +180,7 @@ formSubmit.addEventListener('click', event => {
       if (formConfirmPass.value === formPass.value) { // confirm password matches with password
         errConfirmPass.innerHTML = '';
         errConfirmPass.classList.remove('form--error__active');
+        isConfirmPass = true;
       } else { // passwords do not match
         errConfirmPass.innerHTML = 'The passwords do not match.';
         errConfirmPass.classList.add('form--error__active');
@@ -180,6 +192,15 @@ formSubmit.addEventListener('click', event => {
   } else { // field is empty
     errConfirmPass.innerHTML = 'This field is required';
     errConfirmPass.classList.add('form--error__active');
+  }
+
+  // checks if form can be submitted or not
+  if (isName && isEmail && isPass && isConfirmPass) { // form passes
+    formResult.innerHTML = 'Your fields are correct and pass the js verification test client side.';
+    formResult.classList.add('form--result__pass');
+  } else { // form fails
+    formResult.innerHTML = 'There is an issue with your form.  Please correct it.'
+    formResult.classList.add('form--result__error');
   }
   event.target.blur();
 })
