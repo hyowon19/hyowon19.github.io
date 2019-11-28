@@ -38,7 +38,15 @@
   .contact--info {
     width: 80%;
   }
+
+  .form--button:hover {
+    background: black;
+    color: white;
+    transform: translateY(0px);
+  }
 }
+
+
 
 @media only screen and (max-width: 700px) {
   .module--top--info {

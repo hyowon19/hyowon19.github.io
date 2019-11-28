@@ -86,7 +86,8 @@ formReset.addEventListener('click', event => {
   errPass.classList.remove('form--error__active');
   errConfirmPass.classList.remove('form--error__active');
   formResult.classList.remove('form--result__pass', 'form--result__error');
-  event.target.blur();
+  event.currentTarget.blur();
+  event.target.blut();
 })
 
 // Checks if form field is empty
@@ -119,14 +120,14 @@ function validateConfirmPass(str) {
 const formSubmit = document.querySelector('#formSubmit');
 const formResult = document.querySelector('.form--result');
 
-let isName = false;
-let isEmail = false;
-let isPass = false;
-let isConfirmPass = false;
 
 formSubmit.addEventListener('click', event => {
   event.preventDefault();
   formResult.classList.remove('form--result__pass', 'form--result__error');
+  let isName = false;
+  let isEmail = false;
+  let isPass = false;
+  let isConfirmPass = false;
   // checks Name field
   if (validateField(formName)) { // field is not empty
     if (validateName(formName)) { // name is valid
