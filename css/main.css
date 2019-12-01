@@ -511,14 +511,6 @@ footer {
   transform: translateY(-5px);
 }
 
-/* .form--button__hover:hover {
-  background: black;
-  color: white;
-  -webkit-transform: translateY(5px);
-  -moz-transform: translateY(5px);
-  transform: translateY(-5px);
-} */
-
 .form--error {
   display: flex;
   justify-content: flex-end;
@@ -565,4 +557,40 @@ footer {
   color: red;
   visibility: visible;
   opacity: 1;
+}
+
+.jsClock {
+
+}
+
+.jsClock--main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 6rem;
+  font-weight: 100;
+}
+
+.jsClock--counter {
+  margin: 0px 8px;
+}
+
+.jsClock--seperator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* vertical-align: center; */
+  line-height: 5rem;
+  font-size: 5rem;
+  opacity: 1;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.hideSep {
+  opacity: 0;
 }

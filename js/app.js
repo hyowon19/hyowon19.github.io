@@ -205,3 +205,52 @@ formSubmit.addEventListener('click', event => {
   }
   event.target.blur();
 })
+
+// JS Clock Section
+let d, h, m, s;
+
+function initClock() {
+  d = new Date();
+  h = d.getHours();
+  m = d.getMinutes();
+  s = d.getSeconds();
+  clockUpdate();
+}
+
+function clockUpdate() {
+  s++;
+  if (s == 60) {
+    s = 0;
+    m++;
+    if (m == 60) {
+      m = 0;
+      h++;
+      if (h == 24) {
+        h = 0;
+      }
+    }
+  }
+  clockBlink();
+  setCounter('seconds', s);
+  setCounter('minutes', m);
+  setCounter('hours', h);
+  setTimeout(clockUpdate, 1000);
+}
+
+function setCounter(id, num) {
+  if (num < 10) {
+    num = '0' + num;
+  }
+  document.getElementById(id).innerHTML = num;
+}
+
+function clockBlink() {
+  const timeSep = document.querySelectorAll('.jsClock--seperator');
+  for (let i = 0; i < timeSep.length; i++) {
+    if (timeSep[i].classList.contains('hideSep')) {
+      timeSep[i].classList.remove('hideSep');
+    } else {
+      timeSep[i].classList.add('hideSep');
+    }
+  }
+}
