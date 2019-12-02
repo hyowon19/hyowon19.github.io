@@ -219,13 +219,13 @@ function initClock() {
 
 function clockUpdate() {
   s++;
-  if (s == 60) {
+  if (s >= 60) {
     s = 0;
     m++;
-    if (m == 60) {
+    if (m >= 60) {
       m = 0;
       h++;
-      if (h == 24) {
+      if (h >= 24) {
         h = 0;
       }
     }
@@ -238,10 +238,12 @@ function clockUpdate() {
 }
 
 function setCounter(id, num) {
-  if (num < 10) {
+  if (id != 'hours' && num < 10) {
     num = '0' + num;
+  } else if (id == 'hours') {
+    num = '  ' + num;
   }
-  document.getElementById(id).innerHTML = num;
+  document.getElementById(id).textContent = num;
 }
 
 function clockBlink() {
@@ -254,3 +256,96 @@ function clockBlink() {
     }
   }
 }
+
+initClock();
+
+// JS StopWatch
+let stopH = 0,
+    stopM = 0,
+    stopS = 0,
+    stopMS = 0,
+    paused = false;
+
+function initStopWatch() {
+  resetTimer();
+}
+
+function timerUpdate() {
+  // console.log('in here');
+  stopMS++;
+  // console.log(stopMS);
+  if (stopMS >= 100) {
+    stopMS = 0;
+    stopS++;
+    if (stopS >= 60) {
+      stopS = 0;
+      stopM++;
+      if (stopM >= 60) {
+        stopM = 0;
+        stopH++;
+        if (stopH >= 24) {
+          stopH = 0;
+        }
+      }
+    }
+  }
+  setTimeUnit('sMilSecs', stopMS);
+  setTimeUnit('sSecs', stopS);
+  setTimeUnit('sMins', stopM);
+  setTimeUnit('sHrs', stopH);
+  if (!paused) {
+    setTimeout(timerUpdate, 10);
+  }
+}
+
+function stopTimer() {
+  paused = true;
+}
+
+function startTimer() {
+  paused = false;
+  timerUpdate();
+}
+
+function resetTimer() {
+  paused = true;
+  setTimeout(function() {
+    stopH = 0;
+    stopM = 0;
+    stopS = 0;
+    stopMS = 0;
+    document.getElementById('sMilSecs').innerHTML = '00';
+    document.getElementById('sSecs').innerHTML = '00';
+    document.getElementById('sMins').innerHTMl = '00';
+    document.getElementById('sHrs').innerHTML = '00';
+  },10)
+}
+
+initStopWatch();
+
+// function msDisplay(spd) {
+//
+// }
+
+function setTimeUnit(id, num) {
+  if (num < 10) {
+    num = '0' + num;
+  }
+  document.getElementById(id).textContent = num;
+}
+
+
+// var startTime = Date.now();
+//
+// var ss = 0;
+//
+// var interval = setInterval(function() {
+//     // var ss = 0;
+//     var elapsedTime = Date.now() - startTime;
+//     // console.log(elapsedTime);
+//     if ((elapsedTime / 1000) >= 1000) {
+//       ss++;
+//       console.log(ss);
+//     }
+//     document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(2);
+// }, 10);
