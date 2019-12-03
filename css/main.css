@@ -337,3 +337,315 @@ footer {
   color: rgba(0, 130, 40, 1);
   border: 3px solid rgba(0, 130, 40, 0.25);
 }
+
+.modal--container {
+  cursor: pointer;
+}
+.module--list--modal {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  transform: scale(0.25);
+  -webkit-transition: all 0.35s ease;
+  -moz-transition: all 0.35s ease;
+  -ms-transition: all 0.35s ease;
+  -o-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modal__close:after {
+  position: fixed
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 100;
+  content: '\2715';
+  color: black;
+  cursor: pointer;
+}
+
+.modal__open {
+  visibility: visible;
+  opacity: 1;
+  z-index: 100;
+  transform: scale(1);
+}
+
+.modal--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.modal--form {
+  width: 90%;
+  max-width: 500px;
+  padding: 15px;
+}
+
+.modal--info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.modal--info--title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.modal--info--text {
+  font-weight: 100;
+}
+
+.form--block {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.form--block label {
+  padding-left: 3px;
+  margin-bottom: 2px;
+  font-size: 1rem;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.form--block input, .form--block textarea {
+  padding: 7px 5px;
+  border: 3px solid rgba(0,0,0,0.4);
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-family: 'Open Sans', Arial;
+}
+
+.form--block textarea {
+  resize: none;
+}
+.form--block input::placeholder, .form--block textarea::placeholder {
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
+.form--block input:focus, .form--block textarea:focus {
+  border: 3px solid rgba(0,0,0,85);
+}
+
+.form--block input:focus + label, .form--block textarea:focus + label {
+  transform: translateX(7px);
+}
+
+.form--block--textCounter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  opacity: 0.5;
+  padding-left: 5px;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.form--buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form--button {
+  border: 2px solid black;
+  background: white;
+  outline: none;
+  color: black;
+  padding: 10px 15px;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.form--button:active, .form--button:focus, .form--button:hover  {
+  background: black;
+  color: white;
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  transform: translateY(-5px);
+}
+
+.form--error {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: red;
+  visibility: hidden;
+  opacity: 0;
+  height: 15px;
+  -webkit-transition: visibility 0.25s, opacity 0.25s;
+  -moz-transition: visibility 0.25s, opacity 0.25s;
+  -ms-transition: visibility 0.25s, opacity 0.25s;
+  -o-transition: visibility 0.25s, opacity 0.25s;
+  transition: visibility 0.25s, opacity 0.25s;
+}
+
+.form--error__active {
+  visibility: visible;
+  opacity: 0.9;
+}
+
+.form--result {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  color: white;
+  visibility: hidden;
+  opacity: 0;
+  height: 20px;
+  -webkit-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -moz-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -ms-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  -o-transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+  transition: visibility 0.25s, opacity 0.25s, color 0.1s;
+}
+
+.form--result__pass {
+  color: green;
+  visibility: visible;
+  opacity: 1;
+}
+
+.form--result__error {
+  color: red;
+  visibility: visible;
+  opacity: 1;
+}
+
+.jsClock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jsClock--date {
+  font-size: 1.75rem;
+  font-weight: 100;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.jsClock--main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+.jsClock--counter {
+  margin: 0px 8px;
+}
+
+.jsClock--seperator, .jsClock--stopSep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 5rem;
+  font-size: 5rem;
+  opacity: 1;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.hideSep {
+  opacity: 0;
+}
+
+.jsClock--controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.jsClock--button {
+  padding: 20px;
+  margin: 15px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.jsClock--button__start {
+  background: rgba(0, 130, 39, 1);
+}
+
+.jsClock--button__start:hover {
+  background: rgba(1, 103, 24, 1);
+}
+
+.jsClock--button__pause {
+  background: rgba(218, 13, 13, 1);
+}
+
+.jsClock--button__pause:hover {
+  background: rgba(134, 0, 0, 1);
+}
+
+.jsClock--button__reset {
+  background: rgba(14, 55, 184, 1);
+}
+
+.jsClock--button__reset:hover {
+  background: rgba(0, 42, 110, 1);
+}
