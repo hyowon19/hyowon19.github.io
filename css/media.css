@@ -90,6 +90,27 @@
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .jsClock--date {
+    font-size: 1.5rem;
+  }
+  
+  .jsClock--main {
+    font-size: 3.5rem;
+  }
+
+  .jsClock--seperator, .jsClock--stopSep {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .jsClock--button {
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.25rem;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .module {
     padding: 0px 10px;
@@ -123,5 +144,24 @@
   .contact--social li img {
     width: 105px;
     height: 105px;
+  }
+
+  .jsClock--date {
+    font-size: 1.25rem;
+  }
+
+  .jsClock--main {
+    font-size: 2.75rem;
+  }
+
+  .jsClock--seperator, .jsClock--stopSep {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .jsClock--button {
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.1rem;
   }
 }

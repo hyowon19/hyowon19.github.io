@@ -126,7 +126,7 @@
       <div class="module--body">
         <div class="module--list">
 
-          <div class="module--list--item">
+          <div class="module--list--item" id="jsClockModal">
             <a class="module--list--main modal--container">
               <img class="module--list--img" src="./img/dragon-bowl-vector.jpg" alt=""/>
             </a>
@@ -135,13 +135,14 @@
               <div class="module--list--subtitle">html5 | css3 | js</div>
             </div>
             <div class="module--list--modal">
-              <div class="modal__close"></div>
+              <div class="modal__close" id="jsClockClose"></div>
               <div class="modal--content">
                 <div class="modal--info">
                   <div class="modal--info--title">JS Clock</div>
                   <div class="modal--info--text">Simple javascript clock</div>
                 </div>
                 <div class="jsClock">
+                  <div class="jsClock--date">January 1, 0000</div>
                   <div class="jsClock--main">
                     <div class="jsClock--counter" id="hours">00</div>
                     <div class="jsClock--seperator">  :  </div>
@@ -149,20 +150,6 @@
                     <div class="jsClock--seperator">  :  </div>
                     <div class="jsClock--counter" id="seconds">00</div>
                   </div>
-                  <!-- <div class="jsClock--controls">
-                    <div class="jsClock--button">reset
-                    </div>
-                    <div class="jsClock--button">start
-                    </div>
-                    <div class="jsClock--button">pause
-                    </div>
-                    <div class="jsClock--button">1x
-                    </div>
-                    <div class="jsClock--button">2x
-                    </div>
-                    <div class="jsClock--button">4x
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -194,15 +181,11 @@
                     <div class="jsClock--counter" id="sMilSecs">00</div>
                   </div>
                   <div class="jsClock--controls">
-                    <div class="jsClock--button">reset</div>
-                    <div class="jsClock--button">start</div>
-                    <div class="jsClock--button">pause</div>
-                    <div class="jsClock--button">1x</div>
-                    <div class="jsClock--button">2x</div>
-                    <div class="jsClock--button">4x</div>
+                    <div class="jsClock--button jsClock--button__start" id="stopStart">START</div>
+                    <div class="jsClock--button jsClock--button__pause" id="stopPause">PAUSE</div>
+                    <div class="jsClock--button jsClock--button__reset" id="stopReset">RESET</div>
                   </div>
 
-                  <span id="timer"></span> s
                 </div>
               </div>
             </div>

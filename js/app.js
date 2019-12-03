@@ -30,10 +30,12 @@ for (let i = 0; i < accordion.length; i++) {
 
 // Modal Logic
 const modalContainer = document.getElementsByClassName('modal--container');
+// const jsClockModal = document.querySelector('#jsClock'); // for jsClock Modal
 // Setting click event to each item in this section to show its modal element
 for(let i = 0; i < modalContainer.length; i++) {
   modalContainer[i].addEventListener('click', function() {
     this.nextElementSibling.nextElementSibling.classList.add('modal__open');
+    // if (this.nextElementSibling.nextElementSibling)
   });
 }
 
@@ -207,16 +209,23 @@ formSubmit.addEventListener('click', event => {
 })
 
 // JS Clock Section
-let d, h, m, s;
+let d, month, h, m, s, clockRunning, clockTicking;
+const months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+// Sets up clock
 function initClock() {
   d = new Date();
+  y = d.getFullYear();
+  da = d.getDate();
+  mon = d.getMonth();
   h = d.getHours();
   m = d.getMinutes();
   s = d.getSeconds();
+  clockRunning = true;
   clockUpdate();
 }
 
+// Updates clock with incremental time counters
 function clockUpdate() {
   s++;
   if (s >= 60) {
@@ -234,9 +243,19 @@ function clockUpdate() {
   setCounter('seconds', s);
   setCounter('minutes', m);
   setCounter('hours', h);
-  setTimeout(clockUpdate, 1000);
+  setDate();
+
+  if(clockRunning) {
+     clockTicking = setTimeout(clockUpdate, 1000);
+  }
 }
 
+const todayDate = document.querySelector('.jsClock--date');
+function setDate() {
+  todayDate.innerHTML = months[mon] + ' ' + da + ', ' + y;
+}
+
+// Updates the value of counter
 function setCounter(id, num) {
   if (id != 'hours' && num < 10) {
     num = '0' + num;
@@ -246,8 +265,10 @@ function setCounter(id, num) {
   document.getElementById(id).textContent = num;
 }
 
+// Intermittent blinking of the seperators
+const timeSep = document.querySelectorAll('.jsClock--seperator');
+
 function clockBlink() {
-  const timeSep = document.querySelectorAll('.jsClock--seperator');
   for (let i = 0; i < timeSep.length; i++) {
     if (timeSep[i].classList.contains('hideSep')) {
       timeSep[i].classList.remove('hideSep');
@@ -257,7 +278,41 @@ function clockBlink() {
   }
 }
 
-initClock();
+// Reset clock
+function resetClock() {
+  clockRunning = false;
+  clearTimeout(clockTicking);
+
+  setTimeout(function() {
+    h = 0;
+    m = 0;
+    s = 0;
+    document.getElementById('hours').innerHTML = '00';
+    document.getElementById('minutes').innerHTML = '00';
+    document.getElementById('seconds').innerHTML = '00';
+  }, 50)
+}
+
+const jsClockModal = document.getElementById('jsClockModal');
+const jsClockClose = document.getElementById('jsClockClose');
+
+jsClockModal.addEventListener('click', () => {
+  initClock();
+})
+
+jsClockClose.addEventListener('click', () => {
+  setTimeout(() => {
+    resetClock();
+    for (let j = 0; j < timeSep.length; j++) {
+      if (timeSep[j].classList.contains('hideSep')) {
+        timeSep[j].classList.remove('hideSep');
+      } else {
+        timeSep[j].classList.add('hideSep');
+      }
+    }
+  }, 25);
+})
+
 
 // JS StopWatch
 let stopH = 0,
@@ -266,14 +321,14 @@ let stopH = 0,
     stopMS = 0,
     paused = false;
 
+// Sets up stopwatch
 function initStopWatch() {
   resetTimer();
 }
 
+// Logic handling the time incremental counts
 function timerUpdate() {
-  // console.log('in here');
   stopMS++;
-  // console.log(stopMS);
   if (stopMS >= 100) {
     stopMS = 0;
     stopS++;
@@ -289,24 +344,29 @@ function timerUpdate() {
       }
     }
   }
-  setTimeUnit('sMilSecs', stopMS);
-  setTimeUnit('sSecs', stopS);
-  setTimeUnit('sMins', stopM);
-  setTimeUnit('sHrs', stopH);
+  setCounter('sMilSecs', stopMS);
+  setCounter('sSecs', stopS);
+  setCounter('sMins', stopM);
+  setCounter('sHrs', stopH);
+
+  // While not paused, continue the recursive function
   if (!paused) {
     setTimeout(timerUpdate, 10);
   }
 }
 
-function stopTimer() {
+// Pauses stopwatch
+function pauseTimer() {
   paused = true;
 }
 
+// Starts stopwatch
 function startTimer() {
   paused = false;
   timerUpdate();
 }
 
+// Resets/clears stopwatch
 function resetTimer() {
   paused = true;
   setTimeout(function() {
@@ -318,34 +378,16 @@ function resetTimer() {
     document.getElementById('sSecs').innerHTML = '00';
     document.getElementById('sMins').innerHTMl = '00';
     document.getElementById('sHrs').innerHTML = '00';
-  },10)
+  },5)
 }
+
+// Setting up button controls for stopwatch
+const pauseButton = document.querySelector('#stopPause');
+const resetButton = document.querySelector('#stopReset');
+const startButton = document.querySelector('#stopStart');
+
+pauseButton.addEventListener('click', () => { pauseTimer(); });
+resetButton.addEventListener('click', () => { resetTimer(); });
+startButton.addEventListener('click', () => { startTimer(); });
 
 initStopWatch();
-
-// function msDisplay(spd) {
-//
-// }
-
-function setTimeUnit(id, num) {
-  if (num < 10) {
-    num = '0' + num;
-  }
-  document.getElementById(id).textContent = num;
-}
-
-
-// var startTime = Date.now();
-//
-// var ss = 0;
-//
-// var interval = setInterval(function() {
-//     // var ss = 0;
-//     var elapsedTime = Date.now() - startTime;
-//     // console.log(elapsedTime);
-//     if ((elapsedTime / 1000) >= 1000) {
-//       ss++;
-//       console.log(ss);
-//     }
-//     document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(2);
-// }, 10);

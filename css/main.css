@@ -560,14 +560,24 @@ footer {
 }
 
 .jsClock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.jsClock--date {
+  font-size: 1.75rem;
+  font-weight: 100;
+  font-style: italic;
+  margin-bottom: 10px;
 }
 
 .jsClock--main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 100;
 }
 
@@ -598,4 +608,44 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 15px;
+}
+
+.jsClock--button {
+  padding: 20px;
+  margin: 15px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.jsClock--button__start {
+  background: rgba(0, 130, 39, 1);
+}
+
+.jsClock--button__start:hover {
+  background: rgba(1, 103, 24, 1);
+}
+
+.jsClock--button__pause {
+  background: rgba(218, 13, 13, 1);
+}
+
+.jsClock--button__pause:hover {
+  background: rgba(134, 0, 0, 1);
+}
+
+.jsClock--button__reset {
+  background: rgba(14, 55, 184, 1);
+}
+
+.jsClock--button__reset:hover {
+  background: rgba(0, 42, 110, 1);
 }
