@@ -395,6 +395,15 @@ footer {
   width: 100%;
 }
 
+.modal--content__parallax {
+  background-image: url('../img/botabota.png');
+  overflow: scroll;
+}
+
+.bodyHideOverflow {
+  overflow: hidden;
+}
+
 .modal--form {
   width: 90%;
   max-width: 500px;
