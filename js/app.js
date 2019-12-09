@@ -90,8 +90,7 @@ formReset.addEventListener('click', event => {
   errPass.classList.remove('form--error__active');
   errConfirmPass.classList.remove('form--error__active');
   formResult.classList.remove('form--result__pass', 'form--result__error');
-  event.currentTarget.blur();
-  event.target.blut();
+  event.target.blur();
 })
 
 // Checks if form field is empty
