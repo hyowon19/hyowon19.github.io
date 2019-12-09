@@ -30,12 +30,13 @@ for (let i = 0; i < accordion.length; i++) {
 
 // Modal Logic
 const modalContainer = document.getElementsByClassName('modal--container');
-// const jsClockModal = document.querySelector('#jsClock'); // for jsClock Modal
+const htmlBody = document.querySelector('body');
+
 // Setting click event to each item in this section to show its modal element
 for(let i = 0; i < modalContainer.length; i++) {
   modalContainer[i].addEventListener('click', function() {
     this.nextElementSibling.nextElementSibling.classList.add('modal__open');
-    // if (this.nextElementSibling.nextElementSibling)
+    htmlBody.classList.add('bodyHideOverflow'); // hides scrolling of body while viewing modals
   });
 }
 
@@ -44,6 +45,7 @@ const modalClose = document.getElementsByClassName('modal__close');
 for(let i = 0; i < modalClose.length; i++) {
   modalClose[i].addEventListener('click', function() {
     this.parentNode.classList.remove('modal__open');
+    htmlBody.classList.remove('bodyHideOverflow'); // adds back scrolling functionality when exiting modals
   })
 }
 
@@ -378,7 +380,7 @@ function resetTimer() {
     document.getElementById('sSecs').innerHTML = '00';
     document.getElementById('sMins').innerHTMl = '00';
     document.getElementById('sHrs').innerHTML = '00';
-  },5)
+  },10)
 }
 
 // Setting up button controls for stopwatch

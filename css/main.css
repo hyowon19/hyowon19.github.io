@@ -249,7 +249,6 @@ footer {
   padding: 8px;
 }
 
-
 .contact {
   display: flex;
   width: 100%;
@@ -341,8 +340,8 @@ footer {
 .modal--container {
   cursor: pointer;
 }
+
 .module--list--modal {
-  /* display: none; */
   visibility: hidden;
   opacity: 0;
   z-index: -100;
@@ -361,10 +360,15 @@ footer {
   transition: all 0.35s ease;
 }
 
+.module--list--modal__parallax {
+  overflow: scroll;
+}
+
 .modal__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
 }
 
 .modal__close:after {
@@ -395,6 +399,45 @@ footer {
   width: 100%;
 }
 
+.modal--content__scroll {
+  overflow: scroll;
+  display: block;
+}
+
+.modal--content--parallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.85;
+}
+
+.modal--content--parallax__bg1 {
+  background-image: url('../img/andreea-chidu-unsplash.jpg');
+}
+
+.modal--content--parallax__bg2 {
+  background-image: url('../img/tarah-dane-unsplash.jpg');
+}
+
+.modal--content--parallax__bg3 {
+  background-image: url('../img/priscilla-du-preez-unsplash.jpg');
+}
+
+.modal--content--parallax__bg4 {
+  background-image: url('../img/anthony-rossbach-unsplash.jpg');
+}
+
+.bodyHideOverflow {
+  overflow: hidden;
+}
+
 .modal--form {
   width: 90%;
   max-width: 500px;
@@ -405,8 +448,34 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   font-size: 1rem;
   margin-bottom: 30px;
+}
+
+.modal--info__parallax {
+  width: 100%;
+  padding: 3rem 0rem;
+  background: white;
+  opacity: 0.9;
+  margin-bottom: 0px;
+}
+
+.modal--info__box {
+  background: rgba(25,25,25,0.85);
+  color: white;
+  padding: 6rem 0rem;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.modal--info__box p {
+  font-size: 1.15rem;
+  line-height: 1.75rem;
+  font-style: italic;
+  font-weight: 100;
+  padding: 0rem 1.5rem;
+  opacity: 0.85;
 }
 
 .modal--info--title {
