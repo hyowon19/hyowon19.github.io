@@ -392,3 +392,204 @@ resetButton.addEventListener('click', () => { resetTimer(); });
 startButton.addEventListener('click', () => { startTimer(); });
 
 initStopWatch();
+
+
+// Little Adventure Logic
+const advModal = document.querySelector('#adventureModal');
+const storyGreet = document.querySelector('.modal--story--greetings');
+const storyQuestion = document.querySelector('.modal--story--question');
+const storyAnswers = document.querySelector('.modal--story--answers');
+const storyResults = document.querySelector('.modal--story--results');
+const storyQuery = document.querySelector('.modal--story--query');
+const storyChoices = document.querySelector('.modal--story--query--choices');
+const storyQueryResult = document.querySelector('.modal--story--query--result');
+
+const answerOne = document.querySelector('#answer1');
+const answerTwo = document.querySelector('#answer2');
+const answerThree = document.querySelector('#answer3');
+const queryYes = document.querySelector('#qYes');
+const queryNo = document.querySelector('#qNo');
+
+let answ1 = false;
+let answ2 = false;
+let answ3 = false;
+let answInfo1 = '';
+let answInfo2 = '';
+let answInfo3 = '';
+let qYes = false;
+let qNo = false;
+
+// initial load up on opening of modal
+advModal.addEventListener('click', () => {
+  if (advModal.classList.contains('advModalOpen')) {
+
+  } else {
+    advModal.classList.add('advModalOpen');
+    randomState();
+    showGreet();
+    showQuestion();
+    showAnswers();
+  }
+
+  // console.log('in here');
+})
+
+answerOne.addEventListener('click', () => {
+  answ1 = true;
+  changeState();
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  nextState();
+})
+
+answerTwo.addEventListener('click', () => {
+  answ2 = true;
+  changeState();
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  nextState();
+})
+
+answerThree.addEventListener('click', () => {
+  answ3 = true;
+  changeState();
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  nextState();
+})
+
+function resetStory() {
+
+}
+
+function randomState() {
+
+}
+
+function changeState() {
+
+}
+
+function nextState() {
+  showResults();
+  showQuery();
+  showChoices();
+}
+
+function showGreet() {
+  storyGreet.style.display = 'flex';
+  setTimeout(() => {
+    if(storyGreet.classList.contains('modal--story--hide')) {
+      storyGreet.classList.remove('modal--story--hide');
+    }
+  }, 500);
+}
+
+function hideGreet() {
+  storyGreet.classList.add('modal--story--hide');
+  setTimeout(() => { storyGreet.style.display = 'none'; }, 500);
+
+}
+
+function showQuestion() {
+  storyQuestion.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQuestion.classList.contains('modal--story--hide')) {
+      storyQuestion.classList.remove('modal--story--hide');
+    }
+  }, 1000);
+}
+
+function hideQuestion() {
+  storyQuestion.classList.add('modal--story--hide');
+  setTimeout(() => { storyQuestion.style.display = 'none'; }, 500)
+}
+
+function showAnswers() {
+  storyAnswers.style.display = 'flex';
+  setTimeout(() => {
+    if(storyAnswers.classList.contains('modal--story--hide')) {
+      storyAnswers.classList.remove('modal--story--hide');
+      setTimeout(() => {
+        if(answerOne.classList.contains('modal--story--hideTwo')) {
+          answerOne.classList.remove('modal--story--hideTwo');
+        }
+      }, 150);
+      setTimeout(() => {
+        if(answerTwo.classList.contains('modal--story--hideTwo')) {
+          answerTwo.classList.remove('modal--story--hideTwo');
+        }
+      }, 300);
+      setTimeout(() => {
+        if(answerThree.classList.contains('modal--story--hideTwo')) {
+          answerThree.classList.remove('modal--story--hideTwo');
+        }
+      }, 450);
+    }
+  }, 1500)
+}
+
+function hideAnswers() {
+  storyAnswers.classList.add('modal--story--hide');
+  answerOne.classList.add('modal--story--hideTwo');
+  answerTwo.classList.add('modal--story--hideTwo');
+  answerThree.classList.add('modal--story--hideTwo');
+  setTimeout(() => { storyAnswers.style.display = 'none'; }, 500);
+}
+
+function showResults() {
+  storyResults.style.display = 'flex';
+  setTimeout(() => {
+    if(storyResults.classList.contains('modal--story--hide')) {
+      storyResults.classList.remove('modal--story--hide');
+    }
+  }, 500)
+}
+
+function hideResults() {
+  storyResults.classList.add('modal--story--hide');
+  setTimeout(() => { storyResults.style.display = 'none'; }, 500);
+}
+
+function showQuery() {
+  storyQuery.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQuery.classList.contains('modal--story--hide')) {
+      storyQuery.classList.remove('modal--story--hide');
+    }
+  }, 1000)
+}
+
+function hideQuery() {
+  storyQuery.classList.add('modal--story--hide');
+  setTimeout(() => { storyQuery.style.display = 'none'; }, 500);
+}
+
+function showChoices() {
+  storyChoices.style.display = 'flex';
+  setTimeout(() => {
+    if(storyChoices.classList.contains('modal--story--hide')) {
+      storyChoices.classList.remove('modal--story--hide');
+      setTimeout(() => {
+        if(queryYes.classList.contains('modal--story--hideTwo')) {
+          queryYes.classList.remove('modal--story--hideTwo');
+        }
+      }, 150);
+      setTimeout(() => {
+        if(queryNo.classList.contains('modal--story--hideTwo')) {
+          queryNo.classList.remove('modal--story--hideTwo');
+        }
+      }, 300);
+    }
+  }, 1500)
+}
+
+function hideChoices() {
+  storyChoices.classList.add('modal--story--hide');
+  queryYes.classList.add('modal--story--hideTwo');
+  queryNo.classList.add('modal--story--hideTwo');
+  setTimeout(() => { storyChoices.style.display = 'none'; }, 500);
+}
