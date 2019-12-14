@@ -410,14 +410,17 @@ const answerThree = document.querySelector('#answer3');
 const queryYes = document.querySelector('#qYes');
 const queryNo = document.querySelector('#qNo');
 
-let answ1 = false;
-let answ2 = false;
-let answ3 = false;
-let answInfo1 = '';
-let answInfo2 = '';
-let answInfo3 = '';
-let qYes = false;
-let qNo = false;
+const storyAvatars = ['Jessica', 'Billy', 'Ruffles'];
+const storyLocations = ['Montreal', 'Toronto', 'Vancouver'];
+const storyActivities = ['Dining', 'Shopping', 'Swimming'];
+
+const initialQuery = 'Please select your character.';
+
+let answ1, answ2, answ3, locationComplete, avatarComplete, activityComplete, qYes, qNo;
+answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
+let locationPicked = '';
+let avatarPicked = '';
+let activityPicked= '';
 
 // initial load up on opening of modal
 advModal.addEventListener('click', () => {
@@ -425,58 +428,104 @@ advModal.addEventListener('click', () => {
 
   } else {
     advModal.classList.add('advModalOpen');
-    randomStoryState();
     showGreet();
     showQuestion();
     showAnswers();
   }
-
-  // console.log('in here');
 })
 
 answerOne.addEventListener('click', () => {
   answ1 = true;
-  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextStoryState();
+  updateInfo();
+  updateStory();
 })
 
 answerTwo.addEventListener('click', () => {
   answ2 = true;
-  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextStoryState();
+  updateInfo();
+  updateStory();
 })
 
 answerThree.addEventListener('click', () => {
   answ3 = true;
-  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextStoryState();
+  updateInfo();
+  updateStory();
 })
 
 function resetStory() {
 
 }
 
-function randomStoryState() {
+function updateInfo() {
+  if (!avatarComplete) {
+    if (answ1) {
+      avatarPicked = answerOne.innerHTML;
+    } else if (answ2) {
+      avatarPicked = answerTwo.innerHTML;
+    } else if (answ3) {
+      avatarPicked = answerThree.innerHTML;
+    }
+    answ1 = answ2 = answ3 = false;
+    answerOne.innerHTML = storyLocations[0];
+    answerTwo.innerHTML = storyLocations[1];
+    answerThree.innerHTML = storyLocations[2];
+    avatarComplete = true;
+  }
+  else if (avatarComplete && !locationComplete) {
+    if (answ1) {
+      locationPicked = answerOne.innerHTML;
+    } else if (answ2) {
+      locationPicked = answerTwo.innerHTML;
+    } else if (answ3) {
+      locationPicked = answerThree.innerHTML;
+    }
+    answ1 = answ2 = answ3 = false;
+    answerOne.innerHTML = storyActivities[0];
+    answerTwo.innerHTML = storyActivities[1];
+    answerThree.innerHTML = storyActivities[2];
+    locationComplete = true;
+  }
+  else if (avatarComplete && locationComplete && !activityComplete) {
+    if (answ1) {
+      activityPicked = annswerOne.innerHTML;
+    } else if (answ2) {
+      activityPicked = answerTwo.innerHTML;
+    } else if (answ3) {
+      activityPicked = answerThree.innerHTML;
+    }
+    answ1 = answ2 = answ3 = false;
+    activityComplete = true;
+  }
+}
+
+function storyConclusion() {
 
 }
 
-function changeStoryState() {
-
-}
-
-function nextStoryState() {
-  showResults();
-  showQuery();
-  showChoices();
+function updateStory() {
+  setTimeout(() => {
+    if (avatarComplete && !locationComplete && !activityComplete) {
+      showQuestion();
+      showAnswers();
+    } else if (avatarComplete && locationComplete && !activityComplete) {
+      showQuestion();
+      showAnswers();
+    } else if (avatarComplete && locationComplete && activityComplete) {
+      storyConclusion();
+      showResults();
+      showQuery();
+      showChoices();
+    }
+  }, 500);
 }
 
 function showGreet() {
