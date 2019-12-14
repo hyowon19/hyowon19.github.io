@@ -425,7 +425,7 @@ advModal.addEventListener('click', () => {
 
   } else {
     advModal.classList.add('advModalOpen');
-    randomState();
+    randomStoryState();
     showGreet();
     showQuestion();
     showAnswers();
@@ -436,44 +436,44 @@ advModal.addEventListener('click', () => {
 
 answerOne.addEventListener('click', () => {
   answ1 = true;
-  changeState();
+  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextState();
+  nextStoryState();
 })
 
 answerTwo.addEventListener('click', () => {
   answ2 = true;
-  changeState();
+  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextState();
+  nextStoryState();
 })
 
 answerThree.addEventListener('click', () => {
   answ3 = true;
-  changeState();
+  changeStoryState();
   hideGreet();
   hideQuestion();
   hideAnswers();
-  nextState();
+  nextStoryState();
 })
 
 function resetStory() {
 
 }
 
-function randomState() {
+function randomStoryState() {
 
 }
 
-function changeState() {
+function changeStoryState() {
 
 }
 
-function nextState() {
+function nextStoryState() {
   showResults();
   showQuery();
   showChoices();
