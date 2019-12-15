@@ -404,6 +404,9 @@ const storyQuery = document.querySelector('.modal--story--query');
 const storyChoices = document.querySelector('.modal--story--query--choices');
 const storyQueryResult = document.querySelector('.modal--story--query--result');
 
+const choiceOne = document.querySelector('#choice1');
+const choiceTwo = document.querySelector('#choice2');
+const choiceThree = document.querySelector('#choice3');
 const answerOne = document.querySelector('#answer1');
 const answerTwo = document.querySelector('#answer2');
 const answerThree = document.querySelector('#answer3');
@@ -444,7 +447,7 @@ advModal.addEventListener('click', () => {
   }
 })
 
-answerOne.addEventListener('click', () => {
+choiceOne.addEventListener('click', () => {
   answ1 = true;
   hideGreet();
   hideQuestion();
@@ -453,7 +456,7 @@ answerOne.addEventListener('click', () => {
   updateStory();
 })
 
-answerTwo.addEventListener('click', () => {
+choiceTwo.addEventListener('click', () => {
   answ2 = true;
   hideGreet();
   hideQuestion();
@@ -462,7 +465,7 @@ answerTwo.addEventListener('click', () => {
   updateStory();
 })
 
-answerThree.addEventListener('click', () => {
+choiceThree.addEventListener('click', () => {
   answ3 = true;
   hideGreet();
   hideQuestion();
@@ -487,7 +490,6 @@ queryNo.addEventListener('click', () => {
 
 storyClose.addEventListener('click', () => {
   setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
-  // console.log(advModal);
   resetStory();
 })
 
@@ -633,18 +635,18 @@ function showAnswers() {
     if(storyAnswers.classList.contains('modal--story--hide')) {
       storyAnswers.classList.remove('modal--story--hide');
       setTimeout(() => {
-        if(answerOne.classList.contains('modal--story--hideTwo')) {
-          answerOne.classList.remove('modal--story--hideTwo');
+        if(choiceOne.classList.contains('modal--story--hideTwo')) {
+          choiceOne.classList.remove('modal--story--hideTwo');
         }
       }, 150);
       setTimeout(() => {
-        if(answerTwo.classList.contains('modal--story--hideTwo')) {
-          answerTwo.classList.remove('modal--story--hideTwo');
+        if(choiceTwo.classList.contains('modal--story--hideTwo')) {
+          choiceTwo.classList.remove('modal--story--hideTwo');
         }
       }, 300);
       setTimeout(() => {
-        if(answerThree.classList.contains('modal--story--hideTwo')) {
-          answerThree.classList.remove('modal--story--hideTwo');
+        if(choiceThree.classList.contains('modal--story--hideTwo')) {
+          choiceThree.classList.remove('modal--story--hideTwo');
         }
       }, 450);
     }
@@ -653,9 +655,9 @@ function showAnswers() {
 
 function hideAnswers() {
   storyAnswers.classList.add('modal--story--hide');
-  answerOne.classList.add('modal--story--hideTwo');
-  answerTwo.classList.add('modal--story--hideTwo');
-  answerThree.classList.add('modal--story--hideTwo');
+  choiceOne.classList.add('modal--story--hideTwo');
+  choiceTwo.classList.add('modal--story--hideTwo');
+  choiceThree.classList.add('modal--story--hideTwo');
   setTimeout(() => { storyAnswers.style.display = 'none'; }, 500);
 }
 
