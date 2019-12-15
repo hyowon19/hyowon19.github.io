@@ -409,6 +409,7 @@ const answerTwo = document.querySelector('#answer2');
 const answerThree = document.querySelector('#answer3');
 const queryYes = document.querySelector('#qYes');
 const queryNo = document.querySelector('#qNo');
+const storyClose = document.querySelector('.modalStoryClose');
 
 const storyAvatars = ['Jessica', 'Billy', 'Ruffles'];
 const storyLocations = ['Montreal', 'Toronto', 'Vancouver'];
@@ -416,8 +417,19 @@ const storyActivities = ['Dining', 'Shopping', 'Swimming'];
 
 const initialQuery = 'Please select your character.';
 
+const avatarHappy = ['great', 'Loved'];
+const avatarUnhappy = ['terrible','Hated'];
+const avatarBored = ['boring', 'Suffered']
+let avatarState = '';
+let avatarReaction = '';
+
+//initial setup of values
+answerOne.innerHTML = storyAvatars[0];
+answerTwo.innerHTML = storyAvatars[1];
+answerThree.innerHTML = storyAvatars[2];
+
 let answ1, answ2, answ3, locationComplete, avatarComplete, activityComplete, qYes, qNo;
-answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
+    answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
 let locationPicked = '';
 let avatarPicked = '';
 let activityPicked= '';
@@ -428,9 +440,7 @@ advModal.addEventListener('click', () => {
 
   } else {
     advModal.classList.add('advModalOpen');
-    showGreet();
-    showQuestion();
-    showAnswers();
+    initStory();
   }
 })
 
@@ -461,54 +471,114 @@ answerThree.addEventListener('click', () => {
   updateStory();
 })
 
-function resetStory() {
+queryYes.addEventListener('click', () => {
+  resetStory();
+  setTimeout(() => {
+    initStory();
+  }, 1000)
+});
 
+queryNo.addEventListener('click', () => {
+  queryNo.closest('.modal--content').parentNode.classList.remove('modal__open')
+  htmlBody.classList.remove('bodyHideOverflow');
+  setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
+  resetStory();
+})
+
+storyClose.addEventListener('click', () => {
+  setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
+  // console.log(advModal);
+  resetStory();
+})
+
+function initStory() {
+  showGreet();
+  showQuestion();
+  showAnswers();
+}
+
+function resetStory() {
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  hideQueryResult();
+  hideResults();
+  hideQuery();
+  hideChoices();
+  setTimeout(() => {
+    storyQuestion.innerHTML = initialQuery;
+    answerOne.innerHTML = storyAvatars[0];
+    answerTwo.innerHTML = storyAvatars[1];
+    answerThree.innerHTML = storyAvatars[2];
+    locationPicked = avatarPicked = activityPicked = '';
+    answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
+  }, 150)
+}
+
+function randomExp() {
+  switch(Math.floor(Math.random() * 3) + 1) {
+    case 1:
+      avatarState = avatarHappy[0];
+      avatarReaction = avatarHappy[1];
+      break;
+    case 2:
+      avatarState = avatarUnhappy[0];
+      avatarReaction = avatarUnhappy[1];
+      break;
+    case 3:
+      avatarState = avatarBored[0];
+      avatarReaction = avatarBored[1];
+      break;
+  }
 }
 
 function updateInfo() {
-  if (!avatarComplete) {
-    if (answ1) {
-      avatarPicked = answerOne.innerHTML;
-    } else if (answ2) {
-      avatarPicked = answerTwo.innerHTML;
-    } else if (answ3) {
-      avatarPicked = answerThree.innerHTML;
+  setTimeout(() => {
+    if (!avatarComplete) {
+      if (answ1) {
+        avatarPicked = answerOne.innerHTML;
+      } else if (answ2) {
+        avatarPicked = answerTwo.innerHTML;
+      } else if (answ3) {
+        avatarPicked = answerThree.innerHTML;
+      }
+      answ1 = answ2 = answ3 = false;
+      answerOne.innerHTML = storyLocations[0];
+      answerTwo.innerHTML = storyLocations[1];
+      answerThree.innerHTML = storyLocations[2];
+      storyQuestion.innerHTML = "Greetings " + avatarPicked + "! Where would you like to go today?";
+      avatarComplete = true;
     }
-    answ1 = answ2 = answ3 = false;
-    answerOne.innerHTML = storyLocations[0];
-    answerTwo.innerHTML = storyLocations[1];
-    answerThree.innerHTML = storyLocations[2];
-    avatarComplete = true;
-  }
-  else if (avatarComplete && !locationComplete) {
-    if (answ1) {
-      locationPicked = answerOne.innerHTML;
-    } else if (answ2) {
-      locationPicked = answerTwo.innerHTML;
-    } else if (answ3) {
-      locationPicked = answerThree.innerHTML;
+    else if (avatarComplete && !locationComplete) {
+      if (answ1) {
+        locationPicked = answerOne.innerHTML;
+      } else if (answ2) {
+        locationPicked = answerTwo.innerHTML;
+      } else if (answ3) {
+        locationPicked = answerThree.innerHTML;
+      }
+      answ1 = answ2 = answ3 = false;
+      answerOne.innerHTML = storyActivities[0];
+      answerTwo.innerHTML = storyActivities[1];
+      answerThree.innerHTML = storyActivities[2];
+      storyQuestion.innerHTML = "And what would like you to do in " + locationPicked + '?';
+      locationComplete = true;
     }
-    answ1 = answ2 = answ3 = false;
-    answerOne.innerHTML = storyActivities[0];
-    answerTwo.innerHTML = storyActivities[1];
-    answerThree.innerHTML = storyActivities[2];
-    locationComplete = true;
-  }
-  else if (avatarComplete && locationComplete && !activityComplete) {
-    if (answ1) {
-      activityPicked = annswerOne.innerHTML;
-    } else if (answ2) {
-      activityPicked = answerTwo.innerHTML;
-    } else if (answ3) {
-      activityPicked = answerThree.innerHTML;
+    else if (avatarComplete && locationComplete && !activityComplete) {
+      if (answ1) {
+        activityPicked = answerOne.innerHTML;
+      } else if (answ2) {
+        activityPicked = answerTwo.innerHTML;
+      } else if (answ3) {
+        activityPicked = answerThree.innerHTML;
+      }
+      answ1 = answ2 = answ3 = false;
+      activityComplete = true;
+      activityPicked = activityPicked.toLowerCase();
+      randomExp();
+      storyQueryResult.innerHTML = avatarPicked + ' had a ' + avatarState + ' time ' + activityPicked + ' in ' + locationPicked + '. ' + avatarReaction + ' every minute of it!';
     }
-    answ1 = answ2 = answ3 = false;
-    activityComplete = true;
-  }
-}
-
-function storyConclusion() {
-
+  }, 500)
 }
 
 function updateStory() {
@@ -520,7 +590,7 @@ function updateStory() {
       showQuestion();
       showAnswers();
     } else if (avatarComplete && locationComplete && activityComplete) {
-      storyConclusion();
+      showQueryResult();
       showResults();
       showQuery();
       showChoices();
@@ -615,6 +685,20 @@ function showQuery() {
 function hideQuery() {
   storyQuery.classList.add('modal--story--hide');
   setTimeout(() => { storyQuery.style.display = 'none'; }, 500);
+}
+
+function showQueryResult() {
+  storyQueryResult.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQueryResult.classList.contains('modal--story--hide')) {
+      storyQueryResult.classList.remove('modal--story--hide');
+    }
+  }, 500)
+}
+
+function hideQueryResult() {
+  storyQueryResult.classList.add('modal--story--hide');
+  setTimeout(() => { storyQueryResult.style.display = 'none'; }, 500);
 }
 
 function showChoices() {
