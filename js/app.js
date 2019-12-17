@@ -90,8 +90,7 @@ formReset.addEventListener('click', event => {
   errPass.classList.remove('form--error__active');
   errConfirmPass.classList.remove('form--error__active');
   formResult.classList.remove('form--result__pass', 'form--result__error');
-  event.currentTarget.blur();
-  event.target.blut();
+  event.target.blur();
 })
 
 // Checks if form field is empty
@@ -393,3 +392,450 @@ resetButton.addEventListener('click', () => { resetTimer(); });
 startButton.addEventListener('click', () => { startTimer(); });
 
 initStopWatch();
+
+
+// Little Adventure Logic
+
+// Setting up variables for interaction and data/state storage
+const advModal = document.querySelector('#adventureModal');
+const storyGreet = document.querySelector('.modal--story--greetings');
+const storyQuestion = document.querySelector('.modal--story--question');
+const storyAnswers = document.querySelector('.modal--story--answers');
+const storyResults = document.querySelector('.modal--story--results');
+const storyQuery = document.querySelector('.modal--story--query');
+const storyChoices = document.querySelector('.modal--story--query--choices');
+const storyQueryResult = document.querySelector('.modal--story--query--result');
+const imageResultLocation = document.querySelector('.modal--story--results--images');
+const imageResultPerson = document.querySelector('#imgResPerson');
+const imageResultActivity = document.querySelector('#imgResActivity');
+
+const choiceOne = document.querySelector('#choice1');
+const choiceTwo = document.querySelector('#choice2');
+const choiceThree = document.querySelector('#choice3');
+const answerOne = document.querySelector('#answer1');
+const answerTwo = document.querySelector('#answer2');
+const answerThree = document.querySelector('#answer3');
+const imageOne = document.querySelector('#image1');
+const imageTwo = document.querySelector('#image2');
+const imageThree = document.querySelector('#image3');
+const queryYes = document.querySelector('#qYes');
+const queryNo = document.querySelector('#qNo');
+const storyClose = document.querySelector('.modalStoryClose');
+
+const storyAvatars = ['Jimmy', 'Billy', 'Jessica'];
+const storyLocations = ['Montreal', 'Toronto', 'Vancouver'];
+const storyActivities = ['Dining', 'Shopping', 'Swimming'];
+
+const initialQuery = 'Please select your character.';
+
+const avatarHappy = ['great', 'Loved', 'Will definitely do this again!'];
+const avatarUnhappy = ['terrible','Hated', 'Hopefully will not experience this again.'];
+const avatarBored = ['boring', 'Suffered', 'Maybe next time will be better...']
+let avatarState = '';
+let avatarReaction = '';
+let avatarConclusion = '';
+
+//initial setup of values
+answerOne.innerHTML = storyAvatars[0];
+answerTwo.innerHTML = storyAvatars[1];
+answerThree.innerHTML = storyAvatars[2];
+
+let answ1, answ2, answ3, locationComplete, avatarComplete, activityComplete, qYes, qNo;
+    answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
+let locationPicked = '';
+let avatarPicked = '';
+let activityPicked= '';
+let imageLocation = '';
+let imageAvatar = '';
+let imageActivity = '';
+
+// initial load up on opening of modal
+advModal.addEventListener('click', () => {
+  if (advModal.classList.contains('advModalOpen')) {
+
+  } else {
+    advModal.classList.add('advModalOpen');
+    initStory();
+  }
+})
+
+// Click events on choices
+choiceOne.addEventListener('click', () => {
+  answ1 = true;
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  updateInfo();
+  updateStory();
+})
+
+choiceTwo.addEventListener('click', () => {
+  answ2 = true;
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  updateInfo();
+  updateStory();
+})
+
+choiceThree.addEventListener('click', () => {
+  answ3 = true;
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  updateInfo();
+  updateStory();
+})
+
+// Click event, restarts story
+queryYes.addEventListener('click', () => {
+  resetStory();
+  setTimeout(() => {
+    initStory();
+  }, 1000)
+});
+
+// Click event, closes modal and resets story
+queryNo.addEventListener('click', () => {
+  queryNo.closest('.modal--content').parentNode.classList.remove('modal__open')
+  htmlBody.classList.remove('bodyHideOverflow');
+  setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
+  resetStory();
+})
+
+// Click event, closes modal and resets story
+storyClose.addEventListener('click', () => {
+  setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
+  resetStory();
+})
+
+// Initializes story
+function initStory() {
+  setCharacterImage();
+  showGreet();
+  showQuestion();
+  showAnswers();
+  hideImageResults();
+  hideQueryResult();
+  hideResults();
+  hideQuery();
+  hideChoices();
+}
+
+// Resets story parameters
+function resetStory() {
+  hideGreet();
+  hideQuestion();
+  hideAnswers();
+  hideImageResults();
+  hideQueryResult();
+  hideResults();
+  hideQuery();
+  hideChoices();
+  setTimeout(() => {
+    setCharacterImage();
+    storyQuestion.innerHTML = initialQuery;
+    answerOne.innerHTML = storyAvatars[0];
+    answerTwo.innerHTML = storyAvatars[1];
+    answerThree.innerHTML = storyAvatars[2];
+    locationPicked = avatarPicked = activityPicked = '';
+    answ1 = answ2 = answ3 = locationComplete = avatarComplete = activityComplete = qYes = qNo = false;
+  }, 150)
+}
+
+// Selects a random experience for the avatar
+function randomExp() {
+  switch(Math.floor(Math.random() * 3) + 1) {
+    case 1:
+      avatarState = avatarHappy[0];
+      avatarReaction = avatarHappy[1];
+      avatarConclusion = avatarHappy[2];
+      break;
+    case 2:
+      avatarState = avatarUnhappy[0];
+      avatarReaction = avatarUnhappy[1];
+      avatarConclusion = avatarUnhappy[2];
+      break;
+    case 3:
+      avatarState = avatarBored[0];
+      avatarReaction = avatarBored[1];
+      avatarConclusion = avatarBored[2];
+      break;
+  }
+}
+
+// Sets the images for avatar selection
+function setCharacterImage() {
+  imageOne.src = "./img/person01.jpg";
+  imageTwo.src = "./img/person02.jpg";
+  imageThree.src = "./img/person03.jpg";
+}
+
+// Sets the images for location selection
+function setLocationImage() {
+  imageOne.src = "./img/montreal0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+  imageTwo.src = "./img/toronto0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+  imageThree.src = "./img/vancouver0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+}
+
+// Sets the images for activity selection
+function setActivityImage() {
+  imageOne.src = "./img/food0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+  imageTwo.src = "./img/shopping0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+  imageThree.src = "./img/swimming0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
+}
+
+// Updates story information depending on which section it is in
+function updateInfo() {
+  setTimeout(() => {
+    if (!avatarComplete) {
+      if (answ1) {
+        avatarPicked = answerOne.innerHTML;
+        imageAvatar = imageOne.src;
+      } else if (answ2) {
+        avatarPicked = answerTwo.innerHTML;
+        imageAvatar = imageTwo.src;
+      } else if (answ3) {
+        avatarPicked = answerThree.innerHTML;
+        imageAvatar = imageThree.src;
+      }
+      answ1 = answ2 = answ3 = false;
+      answerOne.innerHTML = storyLocations[0];
+      answerTwo.innerHTML = storyLocations[1];
+      answerThree.innerHTML = storyLocations[2];
+      storyQuestion.innerHTML = "Greetings " + avatarPicked + "! Where would you like to go today?";
+      setLocationImage();
+      avatarComplete = true;
+    }
+    else if (avatarComplete && !locationComplete) {
+      if (answ1) {
+        locationPicked = answerOne.innerHTML;
+        imageLocation = imageOne.src;
+      } else if (answ2) {
+        locationPicked = answerTwo.innerHTML;
+        imageLocation = imageTwo.src;
+      } else if (answ3) {
+        locationPicked = answerThree.innerHTML;
+        imageLocation = imageThree.src;
+      }
+      answ1 = answ2 = answ3 = false;
+      answerOne.innerHTML = storyActivities[0];
+      answerTwo.innerHTML = storyActivities[1];
+      answerThree.innerHTML = storyActivities[2];
+      storyQuestion.innerHTML = "And what would like you to do in " + locationPicked + '?';
+      setActivityImage();
+      locationComplete = true;
+    }
+    else if (avatarComplete && locationComplete && !activityComplete) {
+      if (answ1) {
+        activityPicked = answerOne.innerHTML;
+        imageActivity = imageOne.src;
+      } else if (answ2) {
+        activityPicked = answerTwo.innerHTML;
+        imageActivity = imageTwo.src;
+      } else if (answ3) {
+        activityPicked = answerThree.innerHTML;
+        imageActivity = imageThree.src;
+      }
+      answ1 = answ2 = answ3 = false;
+      activityComplete = true;
+      activityPicked = activityPicked.toLowerCase();
+      imageResultPerson.src = imageAvatar;
+      imageResultActivity.src = imageActivity;
+      imageResultLocation.style.backgroundImage = "url(" + imageLocation + ")";
+      randomExp();
+      storyQueryResult.innerHTML = avatarPicked + ' had a ' + avatarState + ' time ' + activityPicked + ' in ' + locationPicked + '. ' + avatarReaction + ' every minute of it!';
+      storyResults.innerHTML = avatarConclusion;
+    }
+  }, 500)
+}
+
+// Loads/shows the next part of story with updated information
+function updateStory() {
+  setTimeout(() => {
+    if (avatarComplete && !locationComplete && !activityComplete) {
+      showQuestion();
+      showAnswers();
+    } else if (avatarComplete && locationComplete && !activityComplete) {
+      showQuestion();
+      showAnswers();
+    } else if (avatarComplete && locationComplete && activityComplete) {
+      showImageResults();
+      showQueryResult();
+      showResults();
+      showQuery();
+      showChoices();
+    }
+  }, 500);
+}
+
+// Shows the greet component
+function showGreet() {
+  storyGreet.style.display = 'flex';
+  setTimeout(() => {
+    if(storyGreet.classList.contains('modal--story--hide')) {
+      storyGreet.classList.remove('modal--story--hide');
+    }
+  }, 375);
+}
+
+// Hides the greet component
+function hideGreet() {
+  storyGreet.classList.add('modal--story--hide');
+  setTimeout(() => { storyGreet.style.display = 'none'; }, 500);
+
+}
+
+// Hides the question component
+function showQuestion() {
+  storyQuestion.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQuestion.classList.contains('modal--story--hide')) {
+      storyQuestion.classList.remove('modal--story--hide');
+    }
+  }, 875);
+}
+
+// Shows the question component
+function hideQuestion() {
+  storyQuestion.classList.add('modal--story--hide');
+  setTimeout(() => { storyQuestion.style.display = 'none'; }, 500)
+}
+
+// Shows the answer section component
+function showAnswers() {
+  storyAnswers.style.display = 'flex';
+  setTimeout(() => {
+    if(storyAnswers.classList.contains('modal--story--hide')) {
+      storyAnswers.classList.remove('modal--story--hide');
+      setTimeout(() => {
+        if(choiceOne.classList.contains('modal--story--hideTwo')) {
+          choiceOne.classList.remove('modal--story--hideTwo');
+        }
+      }, 150);
+      setTimeout(() => {
+        if(choiceTwo.classList.contains('modal--story--hideTwo')) {
+          choiceTwo.classList.remove('modal--story--hideTwo');
+        }
+      }, 300);
+      setTimeout(() => {
+        if(choiceThree.classList.contains('modal--story--hideTwo')) {
+          choiceThree.classList.remove('modal--story--hideTwo');
+        }
+      }, 450);
+    }
+  }, 1375)
+}
+
+// Hides the answer section component
+function hideAnswers() {
+  storyAnswers.classList.add('modal--story--hide');
+  choiceOne.classList.add('modal--story--hideTwo');
+  choiceTwo.classList.add('modal--story--hideTwo');
+  choiceThree.classList.add('modal--story--hideTwo');
+  setTimeout(() => { storyAnswers.style.display = 'none'; }, 500);
+}
+
+// Shows the results component
+function showResults() {
+  storyResults.style.display = 'flex';
+  setTimeout(() => {
+    if(storyResults.classList.contains('modal--story--hide')) {
+      storyResults.classList.remove('modal--story--hide');
+    }
+  }, 1500)
+}
+
+// Hides the results component
+function hideResults() {
+  storyResults.classList.add('modal--story--hide');
+  setTimeout(() => { storyResults.style.display = 'none'; }, 500);
+}
+
+// Shows the final query component
+function showQuery() {
+  storyQuery.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQuery.classList.contains('modal--story--hide')) {
+      storyQuery.classList.remove('modal--story--hide');
+    }
+  }, 2500)
+}
+
+// Hides the final query component
+function hideQuery() {
+  storyQuery.classList.add('modal--story--hide');
+  setTimeout(() => { storyQuery.style.display = 'none'; }, 500);
+}
+
+// Shows the query results component
+function showQueryResult() {
+  storyQueryResult.style.display = 'flex';
+  setTimeout(() => {
+    if(storyQueryResult.classList.contains('modal--story--hide')) {
+      storyQueryResult.classList.remove('modal--story--hide');
+    }
+  }, 1250)
+}
+
+// Hides the query results component
+function hideQueryResult() {
+  storyQueryResult.classList.add('modal--story--hide');
+  setTimeout(() => { storyQueryResult.style.display = 'none'; }, 500);
+}
+
+// Shows the choices component
+function showChoices() {
+  storyChoices.style.display = 'flex';
+  setTimeout(() => {
+    if(storyChoices.classList.contains('modal--story--hide')) {
+      storyChoices.classList.remove('modal--story--hide');
+      setTimeout(() => {
+        if(queryYes.classList.contains('modal--story--hideTwo')) {
+          queryYes.classList.remove('modal--story--hideTwo');
+        }
+      }, 150);
+      setTimeout(() => {
+        if(queryNo.classList.contains('modal--story--hideTwo')) {
+          queryNo.classList.remove('modal--story--hideTwo');
+        }
+      }, 300);
+    }
+  }, 2750)
+}
+
+// Hides the choices component
+function hideChoices() {
+  storyChoices.classList.add('modal--story--hide');
+  queryYes.classList.add('modal--story--hideTwo');
+  queryNo.classList.add('modal--story--hideTwo');
+  setTimeout(() => { storyChoices.style.display = 'none'; }, 500);
+}
+
+// Shows the image results component
+function showImageResults() {
+  imageResultLocation.style.display = 'flex';
+  setTimeout(() => {
+    if(imageResultLocation.classList.contains('modal--story--hideTwo')) {
+      imageResultLocation.classList.remove('modal--story--hideTwo');
+      setTimeout(() => {
+        if(imageResultPerson.classList.contains('modal--story--hideTwo')) {
+          imageResultPerson.classList.remove('modal--story--hideTwo');
+        }
+      }, 450);
+      setTimeout(() => {
+        if(imageResultActivity.classList.contains('modal--story--hideTwo')) {
+          imageResultActivity.classList.remove('modal--story--hideTwo');
+        }
+      }, 650);
+    }
+  }, 250)
+}
+
+// Hides the image results component
+function hideImageResults() {
+  imageResultLocation.classList.add('modal--story--hideTwo');
+  imageResultPerson.classList.add('modal--story--hideTwo');
+  imageResultActivity.classList.add('modal--story--hideTwo');
+  setTimeout(() => { imageResultLocation.style.display = 'none'; }, 500);
+}
