@@ -831,7 +831,6 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: url('../img/montreal01.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   -webkit-transition: all 0.25s ease;

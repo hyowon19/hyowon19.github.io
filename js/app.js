@@ -395,6 +395,8 @@ initStopWatch();
 
 
 // Little Adventure Logic
+
+// Setting up variables for interaction and data/state storage
 const advModal = document.querySelector('#adventureModal');
 const storyGreet = document.querySelector('.modal--story--greetings');
 const storyQuestion = document.querySelector('.modal--story--question');
@@ -443,6 +445,9 @@ let answ1, answ2, answ3, locationComplete, avatarComplete, activityComplete, qYe
 let locationPicked = '';
 let avatarPicked = '';
 let activityPicked= '';
+let imageLocation = '';
+let imageAvatar = '';
+let imageActivity = '';
 
 // initial load up on opening of modal
 advModal.addEventListener('click', () => {
@@ -454,6 +459,7 @@ advModal.addEventListener('click', () => {
   }
 })
 
+// Click events on choices
 choiceOne.addEventListener('click', () => {
   answ1 = true;
   hideGreet();
@@ -481,6 +487,7 @@ choiceThree.addEventListener('click', () => {
   updateStory();
 })
 
+// Click event, restarts story
 queryYes.addEventListener('click', () => {
   resetStory();
   setTimeout(() => {
@@ -488,6 +495,7 @@ queryYes.addEventListener('click', () => {
   }, 1000)
 });
 
+// Click event, closes modal and resets story
 queryNo.addEventListener('click', () => {
   queryNo.closest('.modal--content').parentNode.classList.remove('modal__open')
   htmlBody.classList.remove('bodyHideOverflow');
@@ -495,11 +503,13 @@ queryNo.addEventListener('click', () => {
   resetStory();
 })
 
+// Click event, closes modal and resets story
 storyClose.addEventListener('click', () => {
   setTimeout(() => { advModal.classList.remove('advModalOpen'); }, 100)
   resetStory();
 })
 
+// Initializes story
 function initStory() {
   setCharacterImage();
   showGreet();
@@ -512,6 +522,7 @@ function initStory() {
   hideChoices();
 }
 
+// Resets story parameters
 function resetStory() {
   hideGreet();
   hideQuestion();
@@ -532,6 +543,7 @@ function resetStory() {
   }, 150)
 }
 
+// Selects a random experience for the avatar
 function randomExp() {
   switch(Math.floor(Math.random() * 3) + 1) {
     case 1:
@@ -552,33 +564,40 @@ function randomExp() {
   }
 }
 
+// Sets the images for avatar selection
 function setCharacterImage() {
   imageOne.src = "./img/person01.jpg";
   imageTwo.src = "./img/person02.jpg";
   imageThree.src = "./img/person03.jpg";
 }
 
+// Sets the images for location selection
 function setLocationImage() {
   imageOne.src = "./img/montreal0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
   imageTwo.src = "./img/toronto0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
   imageThree.src = "./img/vancouver0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
 }
 
+// Sets the images for activity selection
 function setActivityImage() {
   imageOne.src = "./img/food0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
   imageTwo.src = "./img/shopping0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
   imageThree.src = "./img/swimming0" + (Math.floor(Math.random() * 2) + 1) + ".jpg";
 }
 
+// Updates story information depending on which section it is in
 function updateInfo() {
   setTimeout(() => {
     if (!avatarComplete) {
       if (answ1) {
         avatarPicked = answerOne.innerHTML;
+        imageAvatar = imageOne.src;
       } else if (answ2) {
         avatarPicked = answerTwo.innerHTML;
+        imageAvatar = imageTwo.src;
       } else if (answ3) {
         avatarPicked = answerThree.innerHTML;
+        imageAvatar = imageThree.src;
       }
       answ1 = answ2 = answ3 = false;
       answerOne.innerHTML = storyLocations[0];
@@ -591,10 +610,13 @@ function updateInfo() {
     else if (avatarComplete && !locationComplete) {
       if (answ1) {
         locationPicked = answerOne.innerHTML;
+        imageLocation = imageOne.src;
       } else if (answ2) {
         locationPicked = answerTwo.innerHTML;
+        imageLocation = imageTwo.src;
       } else if (answ3) {
         locationPicked = answerThree.innerHTML;
+        imageLocation = imageThree.src;
       }
       answ1 = answ2 = answ3 = false;
       answerOne.innerHTML = storyActivities[0];
@@ -607,14 +629,20 @@ function updateInfo() {
     else if (avatarComplete && locationComplete && !activityComplete) {
       if (answ1) {
         activityPicked = answerOne.innerHTML;
+        imageActivity = imageOne.src;
       } else if (answ2) {
         activityPicked = answerTwo.innerHTML;
+        imageActivity = imageTwo.src;
       } else if (answ3) {
         activityPicked = answerThree.innerHTML;
+        imageActivity = imageThree.src;
       }
       answ1 = answ2 = answ3 = false;
       activityComplete = true;
       activityPicked = activityPicked.toLowerCase();
+      imageResultPerson.src = imageAvatar;
+      imageResultActivity.src = imageActivity;
+      imageResultLocation.style.backgroundImage = "url(" + imageLocation + ")";
       randomExp();
       storyQueryResult.innerHTML = avatarPicked + ' had a ' + avatarState + ' time ' + activityPicked + ' in ' + locationPicked + '. ' + avatarReaction + ' every minute of it!';
       storyResults.innerHTML = avatarConclusion;
@@ -622,6 +650,7 @@ function updateInfo() {
   }, 500)
 }
 
+// Loads/shows the next part of story with updated information
 function updateStory() {
   setTimeout(() => {
     if (avatarComplete && !locationComplete && !activityComplete) {
@@ -640,6 +669,7 @@ function updateStory() {
   }, 500);
 }
 
+// Shows the greet component
 function showGreet() {
   storyGreet.style.display = 'flex';
   setTimeout(() => {
@@ -649,12 +679,14 @@ function showGreet() {
   }, 375);
 }
 
+// Hides the greet component
 function hideGreet() {
   storyGreet.classList.add('modal--story--hide');
   setTimeout(() => { storyGreet.style.display = 'none'; }, 500);
 
 }
 
+// Hides the question component
 function showQuestion() {
   storyQuestion.style.display = 'flex';
   setTimeout(() => {
@@ -664,11 +696,13 @@ function showQuestion() {
   }, 875);
 }
 
+// Shows the question component
 function hideQuestion() {
   storyQuestion.classList.add('modal--story--hide');
   setTimeout(() => { storyQuestion.style.display = 'none'; }, 500)
 }
 
+// Shows the answer section component
 function showAnswers() {
   storyAnswers.style.display = 'flex';
   setTimeout(() => {
@@ -693,6 +727,7 @@ function showAnswers() {
   }, 1375)
 }
 
+// Hides the answer section component
 function hideAnswers() {
   storyAnswers.classList.add('modal--story--hide');
   choiceOne.classList.add('modal--story--hideTwo');
@@ -701,6 +736,7 @@ function hideAnswers() {
   setTimeout(() => { storyAnswers.style.display = 'none'; }, 500);
 }
 
+// Shows the results component
 function showResults() {
   storyResults.style.display = 'flex';
   setTimeout(() => {
@@ -710,11 +746,13 @@ function showResults() {
   }, 1500)
 }
 
+// Hides the results component
 function hideResults() {
   storyResults.classList.add('modal--story--hide');
   setTimeout(() => { storyResults.style.display = 'none'; }, 500);
 }
 
+// Shows the final query component
 function showQuery() {
   storyQuery.style.display = 'flex';
   setTimeout(() => {
@@ -724,11 +762,13 @@ function showQuery() {
   }, 2500)
 }
 
+// Hides the final query component
 function hideQuery() {
   storyQuery.classList.add('modal--story--hide');
   setTimeout(() => { storyQuery.style.display = 'none'; }, 500);
 }
 
+// Shows the query results component
 function showQueryResult() {
   storyQueryResult.style.display = 'flex';
   setTimeout(() => {
@@ -738,11 +778,13 @@ function showQueryResult() {
   }, 1250)
 }
 
+// Hides the query results component
 function hideQueryResult() {
   storyQueryResult.classList.add('modal--story--hide');
   setTimeout(() => { storyQueryResult.style.display = 'none'; }, 500);
 }
 
+// Shows the choices component
 function showChoices() {
   storyChoices.style.display = 'flex';
   setTimeout(() => {
@@ -762,6 +804,7 @@ function showChoices() {
   }, 2750)
 }
 
+// Hides the choices component
 function hideChoices() {
   storyChoices.classList.add('modal--story--hide');
   queryYes.classList.add('modal--story--hideTwo');
@@ -769,6 +812,7 @@ function hideChoices() {
   setTimeout(() => { storyChoices.style.display = 'none'; }, 500);
 }
 
+// Shows the image results component
 function showImageResults() {
   imageResultLocation.style.display = 'flex';
   setTimeout(() => {
@@ -788,6 +832,7 @@ function showImageResults() {
   }, 250)
 }
 
+// Hides the image results component
 function hideImageResults() {
   imageResultLocation.classList.add('modal--story--hideTwo');
   imageResultPerson.classList.add('modal--story--hideTwo');
