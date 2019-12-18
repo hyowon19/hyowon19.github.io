@@ -88,13 +88,17 @@
     -moz-transform: scale(1) ;
     transform: scale(1) ;
   }
+
+  .modal--story--greetings, .modal--story--question, .modal--story--results, .modal--story--query, .modal--story--query--result {
+    width: 100%;
+    padding: 0px 15px;
 }
 
 @media only screen and (max-width: 600px) {
   .jsClock--date {
     font-size: 1.5rem;
   }
-  
+
   .jsClock--main {
     font-size: 3.5rem;
   }
@@ -108,6 +112,44 @@
     padding: 15px;
     margin: 10px;
     font-size: 1.25rem;
+  }
+
+  .modal--story--results--images {
+    width: 100%;
+    height: 225px;
+  }
+
+  .modal--story--answer {
+    margin: 30px 10px 0px 10px;
+  }
+
+  .modal--story--results--image, .modal--story--answer--image {
+    height: 125px;
+    width: 125px;
+  }
+
+  .modal--story--results--iamge {
+    border: 3px solid rgba(255,255,255,0.85);
+  }
+
+  .modal--story--greetings, .modal--story--question, .modal--story--results, .modal--story--query, .modal--story--query--result {
+    font-size: 1.35rem;
+    line-height: 1.75rem;
+    padding: 0px 15px;
+  }
+
+  .modal--story--answers, .modal--story--query--choices {
+    font-size: 1.35rem;
+    line-height: 1.5rem;
+  }
+
+  .modal--story--results {
+    margin: 10px 0px 25px;
+  }
+
+  .modal--story--query--choice {
+    margin: 15px 12px 0px 12px;
+    padding: 8px 15px;
   }
 }
 
