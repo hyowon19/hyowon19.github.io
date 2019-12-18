@@ -724,14 +724,20 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .modal--story--greetings, .modal--story--question, .modal--story--results, .modal--story--query, .modal--story--query--result {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  /* align-items: center; */
+  width: 700px;
   font-size: 1.75rem;
   font-weight: 300;
   text-align: center;
   margin: 5px 0px;
-  padding: 0px 45px;
+  /* padding: 0px 25px; */
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -746,9 +752,11 @@ footer {
 .modal--story--answers, .modal--story--query--choices {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 100;
+  width: 100%;
   transform: scale(1);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
