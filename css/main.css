@@ -731,13 +731,11 @@ footer {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-  /* align-items: center; */
   width: 700px;
   font-size: 1.75rem;
   font-weight: 300;
   text-align: center;
   margin: 5px 0px;
-  /* padding: 0px 25px; */
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -846,6 +844,7 @@ footer {
   -ms-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
   transition: all 0.25s ease;
+  border-radius: 10px;
   z-index: 100;
 }
 
@@ -858,6 +857,7 @@ footer {
     height: 100%;
     background-image: linear-gradient(to bottom right,#000000,#000000);
     opacity: 0.5;
+    border-radius: 10px;
     z-index: 110;
 }
 
