@@ -839,3 +839,74 @@ function hideImageResults() {
   imageResultActivity.classList.add('modal--story--hideTwo');
   setTimeout(() => { imageResultLocation.style.display = 'none'; }, 500);
 }
+
+
+//Random User API fetch logic
+// helper functions for carousel creation
+function createNode(element) {
+  return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
+const rUsers = document.getElementById('rUsers');
+const url = 'https://randomuser.me/api/?results=15';
+
+//debating on this, maybe will just load a carousel of 15 instead
+function initiateCall() {
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let randomUsers = data.results;
+    return randomUsers.map(function(randomUser) {
+      let div = createNode('div'),
+          img = createNode('img'),
+          span = createNode('span');
+      div.classList.add('randomUsers--item');
+      img.src = randomUser.picture.large;
+      span.innerHTML = `${randomUser.name.first} ${randomUser.name.last}`;
+      append(div, img);
+      append(div, span);
+      append(rUsers, div);
+    })
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+}
+
+// new Glide('.glide').mount();
+
+// var glide = new Glide('#intro', {
+//   type: 'carousel',
+//   perView: 4,
+//   focusAt: 'center',
+//   breakpoints: {
+//     800: {
+//       perView: 2
+//     },
+//     480: {
+//       perView: 1
+//     }
+//   }
+// }).mount();
+
+new Glide('.glide', {
+  type: 'carousel',
+  startAt: 0,
+  perView: 3,
+  focusAt: 'center'
+}).mount();
+
+// glide.mount()
+
+setTimeout(() => {
+  const leftArrow = document.querySelector('.glide__arrow--left');
+  const rightArrow = document.querySelector('.glide__arrow--right');
+
+  leftArrow.addEventListener('click', () => { console.log('left arrow clicked'); })
+
+  rightArrow.addEventListener('click', () => { console.log('right arrow clicked'); })
+}, 500);
