@@ -860,53 +860,30 @@ function initiateCall() {
   .then((resp) => resp.json())
   .then(function(data) {
     let randomUsers = data.results;
+    let offset = 0;
+    let offsetTwo = 0;
     return randomUsers.map(function(randomUser) {
-      let div = createNode('div'),
-          img = createNode('img'),
-          span = createNode('span');
-      div.classList.add('randomUsers--item');
-      img.src = randomUser.picture.large;
-      span.innerHTML = `${randomUser.name.first} ${randomUser.name.last}`;
-      append(div, img);
-      append(div, span);
-      append(rUsers, div);
+      setTimeout(() => {
+        let div = createNode('div'),
+            img = createNode('img'),
+            span = createNode('span');
+            spanTwo = createNode('span');
+        div.classList.add('randomUsers--item');
+        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 15 + offsetTwo);
+        img.src = randomUser.picture.large;
+        span.innerHTML = `${randomUser.name.first}`;
+        spanTwo.innerHTML = `${randomUser.name.last}`;
+        append(div, img);
+        append(div, span);
+        append(div, spanTwo);
+        append(rUsers, div)
+      }, 100 + offset);
+      offset += 100;
+      // offsetTwo += 15;
+
     })
   })
   .catch(function(error) {
     console.log(error);
   });
 }
-
-// new Glide('.glide').mount();
-
-// var glide = new Glide('#intro', {
-//   type: 'carousel',
-//   perView: 4,
-//   focusAt: 'center',
-//   breakpoints: {
-//     800: {
-//       perView: 2
-//     },
-//     480: {
-//       perView: 1
-//     }
-//   }
-// }).mount();
-
-new Glide('.glide', {
-  type: 'carousel',
-  startAt: 0,
-  perView: 3,
-  focusAt: 'center'
-}).mount();
-
-// glide.mount()
-
-setTimeout(() => {
-  const leftArrow = document.querySelector('.glide__arrow--left');
-  const rightArrow = document.querySelector('.glide__arrow--right');
-
-  leftArrow.addEventListener('click', () => { console.log('left arrow clicked'); })
-
-  rightArrow.addEventListener('click', () => { console.log('right arrow clicked'); })
-}, 500);
