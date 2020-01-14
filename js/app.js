@@ -851,18 +851,25 @@ function append(parent, el) {
   return parent.appendChild(el);
 }
 
+
 const rUsers = document.getElementById('rUsers');
-const url = 'https://randomuser.me/api/?results=15';
+const url = 'https://randomuser.me/api/?results=';
+let numUser = '';
+let newUrl = '';
 const modalAPI = document.getElementById('mAPI');
+const apiClose = document.getElementById('mAPI_close');
+const ruButton = document.getElementById('ruButton');
+const ruButtonNew = document.getElementById('ruButtonNew');
 
 //debating on this, maybe will just load a carousel of 15 instead
 function initiateCall() {
-  fetch(url)
+  setURL();
+  fetch(newUrl)
   .then((resp) => resp.json())
   .then(function(data) {
     let randomUsers = data.results;
     let offset = 0;
-    // let offsetTwo = 0;
+    let offsetTwo = 0;
     return randomUsers.map(function(randomUser) {
       setTimeout(() => {
         let div = createNode('div'),
@@ -870,7 +877,7 @@ function initiateCall() {
             span = createNode('span');
             spanTwo = createNode('span');
         div.classList.add('randomUsers--item');
-        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 25);
+        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 25 + offsetTwo);
         img.src = randomUser.picture.large;
         span.innerHTML = `${randomUser.name.first}`;
         spanTwo.innerHTML = `${randomUser.name.last}`;
@@ -878,9 +885,9 @@ function initiateCall() {
         append(div, span);
         append(div, spanTwo);
         append(rUsers, div)
-      }, 100 + offset);
-      offset += 100;
-      // offsetTwo += 15;
+      }, 75 + offset);
+      offset += 75;
+      offsetTwo += 25;
       modalAPI.classList.add('modal--content__api');
     })
 
@@ -889,3 +896,35 @@ function initiateCall() {
     console.log(error);
   });
 }
+
+function destroyList() {
+  while(rUsers.firstChild) {
+    rUsers.firstChild.remove();
+  }
+  modalAPI.classList.remove('modal--content__api');
+}
+
+function setURL() {
+  numUser = (Math.floor(Math.random() * 15) + 1)
+  newUrl = url + numUser;
+  return newUrl;
+}
+
+apiClose.addEventListener('click', () => {
+  destroyList();
+})
+
+ruButton.addEventListener('click', () => {
+  initiateCall();
+  setTimeout(() => {
+    ruButton.classList.remove('randomUsers--button__active');
+    ruButtonNew.classList.add('randomUsers--button__active');
+  }, 500);
+})
+
+ruButtonNew.addEventListener('click', () => {
+  destroyList();
+  setTimeout(() => {
+    initiateCall();
+  }, 25);
+})

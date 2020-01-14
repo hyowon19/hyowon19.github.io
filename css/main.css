@@ -490,6 +490,7 @@ footer {
 
 .modal--info--text {
   font-weight: 100;
+  padding: 0px 20px;
 }
 
 .form--block {
@@ -901,13 +902,25 @@ footer {
   align-items: center;
   margin: 20px;
   transform: scale(0);
-  transition: 0.35s all;
+  transition: 0.5s all;
   opacity: 0;
   visibility: hidden;
+}
+
+.randomUsers--item img {
+  border-radius: 50%;
 }
 
 .randomUsers--item__open {
   transform: scale(1);
   opacity: 1;
   visibility: visible;
+}
+
+.randomUsers--button {
+  display: none;
+}
+
+.randomUsers--button__active {
+  display: block;
 }

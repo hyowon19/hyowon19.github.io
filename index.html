@@ -118,7 +118,7 @@
       <div class="module--top">
         <div class="module--top--info">
           <div class="module--title">Web Elements</div>
-          <div class="module--subtitle">Website Body Parts</div>
+          <div class="module--subtitle">Random Experiments</div>
         </div>
         <div class="module--accordion"></div>
       </div>
@@ -339,20 +339,18 @@
               <img class="module--list--img" src="./img/jsStopWatch.png" alt=""/>
             </a>
             <div class="module--list--info">
-              <div class="module--list--title">StopwatchBlah</div>
+              <div class="module--list--title">Random User API</div>
               <div class="module--list--subtitle">html5 | css | js</div>
             </div>
             <div class="module--list--modal modal--api">
-              <div class="modal__close"></div>
+              <div class="modal__close" id="mAPI_close"></div>
               <div class="modal--content" id="mAPI">
                 <div class="modal--info">
                   <div class="modal--info--title">Random User API</div>
-                  <div class="modal--info--text">A get call to the random user api</div>
+                  <div class="modal--info--text">Press start to make call to Random User API.  A random number of users will be selected.</div>
                 </div>
-
-
-
-
+                <div class="randomUsers--button randomUsers--button__active" id="ruButton">START</div>
+                <div class="randomUsers--button" id="ruButtonNew">NEW CALL</div>
                 <div class="randomUsers" id="rUsers"></div>
               </div>
             </div>
