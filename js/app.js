@@ -853,6 +853,7 @@ function append(parent, el) {
 
 const rUsers = document.getElementById('rUsers');
 const url = 'https://randomuser.me/api/?results=15';
+const modalAPI = document.getElementById('mAPI');
 
 //debating on this, maybe will just load a carousel of 15 instead
 function initiateCall() {
@@ -861,7 +862,7 @@ function initiateCall() {
   .then(function(data) {
     let randomUsers = data.results;
     let offset = 0;
-    let offsetTwo = 0;
+    // let offsetTwo = 0;
     return randomUsers.map(function(randomUser) {
       setTimeout(() => {
         let div = createNode('div'),
@@ -869,7 +870,7 @@ function initiateCall() {
             span = createNode('span');
             spanTwo = createNode('span');
         div.classList.add('randomUsers--item');
-        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 15 + offsetTwo);
+        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 25);
         img.src = randomUser.picture.large;
         span.innerHTML = `${randomUser.name.first}`;
         spanTwo.innerHTML = `${randomUser.name.last}`;
@@ -880,8 +881,9 @@ function initiateCall() {
       }, 100 + offset);
       offset += 100;
       // offsetTwo += 15;
-
+      modalAPI.classList.add('modal--content__api');
     })
+
   })
   .catch(function(error) {
     console.log(error);

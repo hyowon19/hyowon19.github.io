@@ -404,6 +404,10 @@ footer {
   display: block;
 }
 
+.modal--content__api {
+  height: auto;
+}
+
 .modal--content--parallax {
   display: flex;
   justify-content: center;
@@ -480,6 +484,7 @@ footer {
 
 .modal--info--title {
   font-size: 1.5rem;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -883,18 +888,11 @@ footer {
   align-items: center;
   height: auto;
   width: 100vw;
-  /* text-align: center; */
 }
-
-/* .randomUsers::after {
-  content: '';
-  flex: auto;
-} */
 
 .modal--api {
   overflow-y: scroll;
   overflow-x: hidden;
-  /* height: auto; */
 }
 
 .randomUsers--item {
@@ -903,15 +901,13 @@ footer {
   align-items: center;
   margin: 20px;
   transform: scale(0);
-  transition: 0.25s all;
+  transition: 0.35s all;
   opacity: 0;
   visibility: hidden;
-
 }
 
 .randomUsers--item__open {
   transform: scale(1);
   opacity: 1;
   visibility: visible;
-  /* height: auto; */
 }
