@@ -342,6 +342,7 @@ footer {
 }
 
 .module--list--modal {
+  display: block;
   visibility: hidden;
   opacity: 0;
   z-index: -100;
@@ -404,8 +405,10 @@ footer {
   display: block;
 }
 
-.modal--content__api {
-  height: auto;
+.modal--scroll {
+  margin: auto;
+  max-height: 100%;
+  overflow: auto;
 }
 
 .modal--content--parallax {
@@ -900,7 +903,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 15px;
   transform: scale(0);
   transition: 0.5s all;
   opacity: 0;
@@ -909,6 +912,7 @@ footer {
 
 .randomUsers--item img {
   border-radius: 50%;
+  margin-bottom: 3px;
 }
 
 .randomUsers--item__open {
@@ -919,8 +923,32 @@ footer {
 
 .randomUsers--button {
   display: none;
+  visibility: hidden;
+  opacity: 0;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 2px solid black;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  transition: 0.25s;
+  color: black;
+  cursor: pointer;
+}
+
+.randomUsers--button:hover {
+  color: green;
+  border: 2px solid green;
+}
+
+.randomUsers--buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .randomUsers--button__active {
   display: block;
+  visibility: visible;
+  opacity: 1;
 }

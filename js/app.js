@@ -877,7 +877,7 @@ function initiateCall() {
             span = createNode('span');
             spanTwo = createNode('span');
         div.classList.add('randomUsers--item');
-        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 25 + offsetTwo);
+        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 50 + offsetTwo);
         img.src = randomUser.picture.large;
         span.innerHTML = `${randomUser.name.first}`;
         spanTwo.innerHTML = `${randomUser.name.last}`;
@@ -885,10 +885,9 @@ function initiateCall() {
         append(div, span);
         append(div, spanTwo);
         append(rUsers, div)
-      }, 75 + offset);
-      offset += 75;
-      offsetTwo += 25;
-      modalAPI.classList.add('modal--content__api');
+      }, 50 + offset);
+      offset += 50;
+      offsetTwo += 50;
     })
 
   })
@@ -901,7 +900,6 @@ function destroyList() {
   while(rUsers.firstChild) {
     rUsers.firstChild.remove();
   }
-  modalAPI.classList.remove('modal--content__api');
 }
 
 function setURL() {
@@ -912,6 +910,8 @@ function setURL() {
 
 apiClose.addEventListener('click', () => {
   destroyList();
+  ruButton.classList.add('randomUsers--button__active');
+  ruButtonNew.classList.remove('randomUsers--button__active');
 })
 
 ruButton.addEventListener('click', () => {
@@ -919,7 +919,7 @@ ruButton.addEventListener('click', () => {
   setTimeout(() => {
     ruButton.classList.remove('randomUsers--button__active');
     ruButtonNew.classList.add('randomUsers--button__active');
-  }, 500);
+  }, 350);
 })
 
 ruButtonNew.addEventListener('click', () => {
