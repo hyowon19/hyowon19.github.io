@@ -839,3 +839,92 @@ function hideImageResults() {
   imageResultActivity.classList.add('modal--story--hideTwo');
   setTimeout(() => { imageResultLocation.style.display = 'none'; }, 500);
 }
+
+
+//Random User API fetch logic
+// helper functions for carousel creation
+function createNode(element) {
+  return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
+
+const rUsers = document.getElementById('rUsers');
+const url = 'https://randomuser.me/api/?results=';
+let numUser = '';
+let newUrl = '';
+const modalAPI = document.getElementById('mAPI');
+const apiClose = document.getElementById('mAPI_close');
+const ruButton = document.getElementById('ruButton');
+const ruButtonNew = document.getElementById('ruButtonNew');
+
+//debating on this, maybe will just load a carousel of 15 instead
+function initiateCall() {
+  setURL();
+  fetch(newUrl)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let randomUsers = data.results;
+    let offset = 0;
+    let offsetTwo = 0;
+    return randomUsers.map(function(randomUser) {
+      setTimeout(() => {
+        let div = createNode('div'),
+            img = createNode('img'),
+            span = createNode('span');
+            spanTwo = createNode('span');
+        div.classList.add('randomUsers--item');
+        setTimeout( () => { div.classList.add('randomUsers--item__open'); }, 50 + offsetTwo);
+        img.src = randomUser.picture.large;
+        span.innerHTML = `${randomUser.name.first}`;
+        spanTwo.innerHTML = `${randomUser.name.last}`;
+        append(div, img);
+        append(div, span);
+        append(div, spanTwo);
+        append(rUsers, div)
+      }, 50 + offset);
+      offset += 50;
+      offsetTwo += 50;
+    })
+
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+}
+
+function destroyList() {
+  while(rUsers.firstChild) {
+    rUsers.firstChild.remove();
+  }
+}
+
+function setURL() {
+  numUser = (Math.floor(Math.random() * 15) + 1)
+  newUrl = url + numUser;
+  return newUrl;
+}
+
+apiClose.addEventListener('click', () => {
+  destroyList();
+  ruButton.classList.add('randomUsers--button__active');
+  ruButtonNew.classList.remove('randomUsers--button__active');
+})
+
+ruButton.addEventListener('click', () => {
+  initiateCall();
+  setTimeout(() => {
+    ruButton.classList.remove('randomUsers--button__active');
+    ruButtonNew.classList.add('randomUsers--button__active');
+  }, 350);
+})
+
+ruButtonNew.addEventListener('click', () => {
+  destroyList();
+  setTimeout(() => {
+    initiateCall();
+  }, 25);
+})
