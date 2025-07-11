@@ -2,7 +2,7 @@
 html, body {
   background-color: rgba(20,20,20,1);
   font-family: 'Open Sans', Arial;
-  margin: 0px;
+  margin: 0px; 
   padding: 0px;
 }
 
@@ -373,7 +373,7 @@ footer {
 }
 
 .modal__close:after {
-  position: fixed
+  position: fixed;
   top: 0;
   right: 0;
   padding: 10px;

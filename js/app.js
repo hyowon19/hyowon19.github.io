@@ -14,7 +14,7 @@ for (let i = 0; i < accordion.length; i++) {
     if (module.style.maxHeight) {
       module.style.maxHeight = null;
     } else {
-      module.style.maxHeight = module.scrollHeight + 'px';
+      module.style.maxHeight = module.scrollHeight + 'px'; 
     }
   });
 }
@@ -61,6 +61,8 @@ formMessage.addEventListener('input', () => {
   const charCount = formMessage.textLength;
   charDisplay.innerHTML = charMax - charCount;
 })
+
+// consider adding error message when user has no more characters left to input, include a suggestion message to make message shorter for it to fit
 
 // Form Reset Button logic
 const formReset = document.querySelector('#formReset');
