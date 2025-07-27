@@ -930,3 +930,17 @@ ruButtonNew.addEventListener('click', () => {
     initiateCall();
   }, 25);
 })
+
+
+// Set footer year
+let footerYear = document.querySelector("#footerYear");
+
+footerYear.innerHTML = new Date().getFullYear();
+
+//cookie policy
+let cookieBtn = document.querySelector(".cookiePolicy");
+let cookieTerms = document.querySelector("#cookieTerms");
+
+cookieBtn.addEventListener('click', () => {
+  cookieTerms.classList.add("cookieOpened");
+});

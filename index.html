@@ -15,7 +15,7 @@
     <header>
       <nav class="menu">
         <a href="#portfolio" class="menu--item">Portfolio</a>
-        <a href="#contact" class="menu--item">Contact</a>
+        <a href="#contact" class="menu--item">About Me</a>
       </nav>
     </header> 
 
@@ -125,10 +125,8 @@
 
       <div class="module--body">
         <div class="module--list">
-
-
-
-          <div class="module--list--item">
+          <!-- Remove parallax for now, issue working with modal element -->
+          <!-- <div class="module--list--item">
             <a class="module--list--main modal--container">
               <img class="module--list--img" src="./img/parallax.png" alt=""/>
             </a>
@@ -139,7 +137,7 @@
             <div class="module--list--modal">
               <div class="modal__close"></div>
               <div class="modal--content modal--content__scroll">
-                <div class="modal--content--parallax modal--content--parallax__bg1">
+                 <div class="modal--content--parallax modal--content--parallax__bg1">
                   <div class="modal--info modal--info__parallax">
                     <div class="modal--info--title">Simple Parallax</div>
                     <div class="modal--info--text">Photo by Andreea Chidu on Unsplash</div>
@@ -148,7 +146,7 @@
                 <div class="modal--info modal--info__box">
                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                 </div>
-                <div class="modal--content--parallax modal--content--parallax__bg2">
+                 <div class="modal--content--parallax modal--content--parallax__bg2">
                   <div class="modal--info modal--info__parallax">
                     <div class="modal--info--title">Simple Parallax</div>
                     <div class="modal--info--text">Photo by Tarah Dane on Unsplash</div>
@@ -174,7 +172,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="module--list--item" id="adventureModal">
             <a class="module--list--main modal--container">
@@ -415,7 +413,7 @@
       <div id="skills" class="contact--info">
         <div class="contact--info--box">Victor Wong</div>
         <div class="contact--info--box">Front End</div>
-        <div class="contact--info--box">Montreal</div>
+        <div class="contact--info--box">Dorval</div>
         <div class="contact--info--box">Canada</div>
         <div class="contact--info--box contact--info--box__green">Javascript</div>
         <div class="contact--info--box contact--info--box__green">Html5</div>
@@ -433,12 +431,37 @@
       </div>
     </div>
 
-    <footer>Hyowon @<script>document.write(new Date().getFullYear());</script>.  All Rights Reserved.  Maybe.</footer>
+    
+    <div id="cookieTerms" class="cookieContainer">
+        <div class="cookieContainer__info">
+          This is the cookie policy section, but not actually about cookies.  There are no actual cookies or data being taken while you're here on this website.  
+          
+          This is me recognizing that cookies exist and are required in the world wide web and is a standard practice on virtually all websites.  Humour me and pick your selection about cookies.
+        </div>
+        <div class="cookieContainer__cta">
+          <button>Reject</button>
+          <button>Accept</button>
+        </div>
+      </div>
 
-    <script src="./js/app.js"></script>
+    <footer>
+      <div class="cookiePolicy">
+        <img src =""/>
+      </div>
+      <p>Victor.Wong.Dorval.Canada.Ready.To.Work @<span id="footerYear"></span></p>
+    </footer>
+
+   <div id="helpMe1"></div>
+   <div id="helpMe2"></div>
+   <div id="helpMe3"></div>
+   <div id="helpMe4"></div>
+   <div id="helpMe5"></div>
+
+    <script src="./js/app.js"></script> <!-- load base javascript -->
     <!-- Will need to add a lot of ids or unique classes to this 
      note: not everything needs to be translated, also try to avoid having another html page, just translate text as necessary-->
-    <script src="./js/language.js"></script>
+    <!-- <script src="./js/language.js"></script> turn this on later, loads en/fr translations js -->
+    <!-- <script src="./js/skills.js"></script> turn this on later, loads customized/specialized js -->
 
   </body>
 </html>
