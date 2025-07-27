@@ -306,8 +306,53 @@ footer p {
   width: 1005;
   box-sizing: border-box;
   padding: 25px 20px;
-  background: grey;
+  background: black;
   color: white;
+  flex-direction: column;
+}
+
+.cookieContainer__info {
+
+}
+
+.cookieContainer__cta {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.cookieContainer__cta button {
+  padding: 10px 25px;
+  border-radius: 30px;
+  color: white;
+  background: black;
+  border: 3px solid white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-style: italic;
+  transition: all 0.25s ease;
+}
+
+.cookieContainer__cta--reject {
+
+}
+
+.cookieContainer__cta--reject:hover, .cookieContainer__cta--reject:focus {
+  color: rgba(186, 11, 11, 1);
+  border: 3px solid rgba(186, 11, 11, 0.25);
+  transform: scale(1.1);
+}
+
+.cookieContainer__cta--accept {
+  margin-left: 20px;
+}
+
+.cookieContainer__cta--accept:hover, .cookieContainer__cta--accept:focus {
+  /* color: dodgerblue;
+  border: 3px solid rgba(30, 144, 255, 0.25); */
+  transform: scale(1.1);
+  color: rgba(0, 130, 40, 1);
+  border: 3px solid rgba(0, 130, 40, 0.25);
 }
 
 
