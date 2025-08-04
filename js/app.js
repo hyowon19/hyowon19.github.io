@@ -17,7 +17,38 @@ for (let i = 0; i < accordion.length; i++) {
       module.style.maxHeight = module.scrollHeight + 'px'; 
     }
   });
+
+  //Assign keyup event handler to each accordion symbol when focused to toggle active class when enter or spacebar are pressed
+  accordion[i].addEventListener("keyup", function(event) {
+    if(event.key === "Enter" || event.key === " " || event.code === "Space" || event.keyCode === 32) {
+      this.children[1].classList.toggle("module--accordion__active");
+      let module = this.nextElementSibling;
+      // Checks on click if element is at maxHeight or not. If true, accordion will close.  If false, accordion will open.
+      if (module.style.maxHeight) {
+        module.style.maxHeight = null;
+      } else {
+        module.style.maxHeight = module.scrollHeight + 'px'; 
+      }
+    }
+  });
+
+  //prevent scrolling to bottom of screen if spacebar was pressed
+  accordion[i].addEventListener("keydown", function(event) {
+    if(event.key === " " || event.code === "Space" || event.keyCode === 32) {
+      console.log("space bar pressed, prevented default behaviour, keydown")
+      event.preventDefault();
+    }
+  })
 }
+
+
+// const accordSymbol = document.getElementsByClassName("module--accordion");
+
+// for (let i = 0; i < accordSymbol.length; i++) {
+//   if (x=y) {
+
+//   }
+// }
 
 // On page load, shuffle div elements randomly in contact section
 (function() {

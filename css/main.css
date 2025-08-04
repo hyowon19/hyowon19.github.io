@@ -45,11 +45,11 @@ header {
 
 .menu--item:hover {
   opacity: 0.85;
-  background: blue;
-  color: white;
+  /* background: blue; */
+  /* color: white; */
 }
 
-/* .menu--item:before {
+.menu--item:before {
   content: '';
   position: absolute;
   width: 50%;
@@ -59,7 +59,7 @@ header {
   background: -webkit-linear-gradient(90deg, rgba(0,143,255,0) 0%, rgba(0,143,255,1) 50%, rgba(0,143,255,0) 100%);
   background: linear-gradient(90deg, rgba(0,143,255,0) 0%, rgba(0,143,255,1) 50%, rgba(0,143,255,0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#008fff",endColorstr="#008fff",GradientType=1);
-  bottom: -8px;
+  bottom: 15px;
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);
@@ -71,7 +71,7 @@ header {
   -webkit-transform: scaleX(1);
   -ms-transform: scaleX(1);
   transform: scaleX(1);
-} */
+}
 
 .module {
   display: flex;
@@ -106,7 +106,7 @@ header {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 15px 0px;
+  padding: 10px 0px;
 }
 
 .module--top--info {
@@ -152,19 +152,32 @@ header {
   left: -18px;
 }
 
-.module--accordion::after {
+.module--accordion {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  /* outline: none; */
+  /* outline: 1px solid white; */
+  border-radius: 5px;
+}
+
+.module--accordion:focus, .module--accordion:focus-visible {
+  outline: 1px solid white;
+}
+
+.module--accordion:after {
   content: '\002B';
   font-size: 33px;
   font-weight: 100;
   color: #FFF;
   display: block;
+  /* border: 1px solid red; */
+  
 }
 
-.module--accordion__active {
-
-}
-
-.module--accordion__active::after {
+.module--accordion__active:after {
   content: "\2212";
 }
 
@@ -203,7 +216,7 @@ header {
   width: 350px;
   height: 350px;
   object-fit: cover;
-  opacity: 0.75;
+  opacity: 0.45;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
@@ -211,13 +224,14 @@ header {
   transition: all 0.25s ease;
 }
 
-.module--list--img:hover {
+.module--list--img:hover, .module--list--main:focus > .module--list--img {
   opacity: 1;
   -webkit-transform: scale(1.1) ;
 	-moz-transform: scale(1.1) ;
 	transform: scale(1.1) ;
-
 }
+
+
 
 .module--list--info {
   display: flex;
@@ -253,7 +267,7 @@ footer {
   font-weight: 100;
   color: rgba(255,255,255, 0.35);
   background-color: rgba(39, 48, 55,1);
-  padding: 6px 8px;
+  padding: 4px 8px;
   box-sizing: border-box;
 }
 
@@ -268,17 +282,17 @@ footer p {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: white;
+  /* background: white; */
   opacity: 0.7;
-}
-
-.cookiePolicy {
   cursor: pointer;
 }
 
 .cookiePolicy img {
-  visibility: hidden;
-  display: none;
+  /* visibility: hidden;
+  display: none; */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 
