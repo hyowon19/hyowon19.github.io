@@ -41,22 +41,14 @@ for (let i = 0; i < accordion.length; i++) {
   })
 }
 
-
-// const accordSymbol = document.getElementsByClassName("module--accordion");
-
-// for (let i = 0; i < accordSymbol.length; i++) {
-//   if (x=y) {
-
-//   }
-// }
-
 // On page load, shuffle div elements randomly in contact section
-(function() {
-  const skills = document.querySelector('#skills');
-  for(let i = skills.children.length; i >= 0; i--) {
-    skills.appendChild(skills.children[Math.random() * i | 0]);
-  }
-}) ();
+// may remove this entirely, basically an array shuffling example; section being redone
+// (function() {
+//   const skills = document.querySelector('#skills');
+//   for(let i = skills.children.length; i >= 0; i--) {
+//     skills.appendChild(skills.children[Math.random() * i | 0]);
+//   }
+// }) ();
 
 
 // Modal Logic
@@ -991,3 +983,8 @@ cookieCtaReject.addEventListener('click', () => {
 cookieCtaAccept.addEventListener('click', () => {
   cookieTerms.classList.remove("cookieOpened");
 })
+
+//noteToSelf
+//Expand on cookie section beyond reject/accept cta scenarios - some interaction with the user
+
+//consider adding a ruffleBot semi chat thingy maybe - BIG CONSIDER

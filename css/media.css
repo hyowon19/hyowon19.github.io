@@ -4,7 +4,7 @@
   }
 
   .module--subtitle {
-    opacity: 1;
+    opacity: 0.9;
   }
 
   .module--top:hover .module--title {
@@ -17,7 +17,7 @@
 
   .module--list--img {
     width: 300px;
-    height: 300px;
+    height: 225px;
   }
 
   .module--list--img:hover {
@@ -185,7 +185,7 @@
 
   .module--list--img {
     width: 100%;
-    height: 250px;
+    height: 175px;
   }
 
   .contact--social li {
