@@ -50,6 +50,92 @@ for (let i = 0; i < accordion.length; i++) {
 //   }
 // }) ();
 
+const loadSkillBar = () => {
+  let barSkills = document.querySelectorAll(".contact--skills__list__category--bar");
+
+  for(let i = 0; i < barSkills.length; i++){
+    let currentSkillNum = barSkills[i].children[0].innerHTML;
+    //remove all color classes
+    barSkills[i].classList.remove('green', 'yellow', 'orange', 'red')
+
+    //set color class depending on value
+    if(currentSkillNum >= 75 && currentSkillNum < 90 ) {
+      barSkills[i].classList.add('green');
+    } else if (currentSkillNum >= 50 && currentSkillNum < 75) {
+      barSkills[i].classList.add('yellow');
+    } else if (currentSkillNum >= 10 && currentSkillNum < 50) {
+      barSkills[i].classList.add('orange');
+    } else if (currentSkillNum < 10) {
+      barSkills[i].classList.add('red');
+    }
+    barSkills[i].children[1].style.width = barSkills[i].children[0].innerHTML + "%";
+  }
+}
+// run on page load initial
+loadSkillBar();
+
+// shuffles skill tech elements randomly
+const shuffleSkillBar = () => {
+  let skills = document.querySelector('.contact--skills__list');
+
+  skills.classList.add('hideList');
+
+  setTimeout( () => {
+    for(let i=0; i < skills.children.length; i++) {
+    skills.appendChild(skills.children[Math.random() * i | 0]);
+    }
+    skills.classList.remove('hideList');
+  }, 550)
+}
+
+// set random skill value
+const setRandomSkillValue = () => {
+  let barSkills = document.querySelectorAll(".contact--skills__list__category--bar");
+
+  for (let i = 0; i < barSkills.length; i++) {
+    barSkills[i].children[0].innerHTML = Math.floor(Math.random() * 100) + 1;
+  }
+  loadSkillBar();
+}
+
+//reset tech stack to initial values
+const techStackReset = () => {
+  const categoryArr = [
+    { name: 'html', value: 90 },
+    { name: 'javascript', value: 95 },
+    { name: 'css', value: 93 },
+    { name: 'jquery', value: 55 },
+    { name: 'illustrator', value: 75 },
+    { name: 'drupal', value: 5 },
+    { name: 'php', value: 25 },
+    { name: 'wordpress', value: 50 },
+    { name: 'react', value: 40 },
+    { name: 'vue', value: 55 },
+    { name: 'photoshop', value: 40 },
+    { name: 'twig', value: 5 },
+    { name: 'sql', value: 50 },
+    { name: 'git', value: 75 }
+  ];
+
+  let skills = document.querySelector('.contact--skills__list');
+
+  skills.classList.add('hideList');
+
+  setTimeout( () => {
+    for(let i = 0; i < skills.children.length; i++) {
+    skills.children[i].children[0].innerHTML = categoryArr[i].name; // resets name
+    skills.children[i].children[1].children[0].innerHTML = categoryArr[i].value; // resets bar value
+  }
+  skills.classList.remove('hideList');
+  loadSkillBar();
+  }, 550)
+}
+
+// sort up function
+
+
+// sort down function
+
 
 // Modal Logic
 const modalContainer = document.getElementsByClassName('modal--container');
