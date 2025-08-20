@@ -136,6 +136,12 @@ const techStackReset = () => {
 
 // sort down function
 
+document.querySelector('.contact--skills__top--controls--reset').addEventListener('click', () => { techStackReset(); })
+
+document.querySelector('.contact--skills__top--controls--shuffle').addEventListener('click', () => { shuffleSkillBar(); })
+
+document.querySelector('.contact--skills__top--controls--random').addEventListener('click', () => { setRandomSkillValue(); })
+
 
 // Modal Logic
 const modalContainer = document.getElementsByClassName('modal--container');
