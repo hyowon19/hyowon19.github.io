@@ -1345,16 +1345,8 @@ footer p {
   align-items: center;
   justify-content: center;
   position: relative;
-
+  color: white;
 }
-
-/* .myDog__bg {
-  background-image: url('../img/myDog.jpg');
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 .myDog__image {
   display: flex;
@@ -1369,13 +1361,48 @@ footer p {
   border-radius: 15px;
   outline-offset: 5px;
   outline: 1px solid rgba(255, 255, 255, 0.25);
-  -webkit-transition: all 0.25s ease;
-  -moz-transition: all 0.25s ease;
-  -ms-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+  transform: scale(0.75);
+  opacity: 0;
+  /* -webkit-transition: all 0.25s ease-in-out 0.2s;
+  -moz-transition: all 0.25s ease-in-out 0.2s;
+  -ms-transition: all 0.25s ease-in-out 0.2s;
+  -o-transition: all 0.25s ease-in-out 0.2s;
+  transition: all 0.25s ease-in-out 0.2s; */
+
+  transition: all 0.35s cubic-bezier(0.175, 0.285, 0.32, 1.575);
 }
 
 .myDog__overLay {
   position: absolute;
+}
+
+#myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__image > img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.pos1 {
+  position: absolute;
+  top: 80%;
+  right: 20%;
+}
+
+.pos2 {
+  position: absolute;
+  top: 60%;
+  right: 60%;
+}
+
+.pos3 {
+  position: absolute;
+  top: 20%;
+  right: 90%;
+}
+
+.pos4 {
+
+}
+
+.pos5 {
+
 }

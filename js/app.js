@@ -41,6 +41,14 @@ for (let i = 0; i < accordion.length; i++) {
   })
 }
 
+
+//adding event listener for module containg Ruffles content
+const rufflesModule = document.querySelector("#myDogRuffles");
+
+rufflesModule.addEventListener("click", () => {
+  rufflesModule.classList.contains("popRuffles") ? rufflesModule.classList.remove("popRuffles") : rufflesModule.classList.add("popRuffles");
+})
+
 // On page load, shuffle div elements randomly in contact section
 // may remove this entirely, basically an array shuffling example; section being redone
 // (function() {
