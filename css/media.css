@@ -35,16 +35,60 @@
     height: 125px;
   }
 
-  .contact--info {
+  /* .contact--info {
     width: 80%;
-  }
+  } */
 
   .form--button:hover {
     background: black;
     color: white;
     transform: translateY(0px);
   }
+
+  .myDog {
+    font-size: 0.85rem;
+  }
+
+  .contact--info {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: unset;
+    width: calc(90% + 30px);
+  }
+
+  .contact--info__social {
+    align-items: flex-start;
+  }
+
+  .contact--info__social--items a{
+    margin: 0px 10px 0px 0px;
+  }
+
+  .contact--skills {
+    width: calc(90% + 30px);
+  }
 }
+
+/* @media only screen and (max-width: 800px) {
+  .contact--info {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: unset;
+    width: calc(90% + 30px);
+  }
+
+  .contact--info__social {
+    align-items: flex-start;
+  }
+
+  .contact--info__social--items a{
+    margin: 0px 10px 0px 0px;
+  }
+
+  .contact--skills {
+    width: calc(90% + 30px);
+  }
+} */
 
 
 
@@ -74,6 +118,10 @@
     width: 90%;
   }
 
+  .contact--skills {
+    width: 90%;
+  }
+
   .contact--info--box {
     margin: 8px;
     font-size: 1.1em;
@@ -100,6 +148,70 @@
 
   .modal--story--results--images:before {
     border-radius: 0px;
+  }
+
+  .myDog {
+    flex-direction: row;
+  }
+
+  .myDog__overLay {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+  }
+  
+  .pos1, .pos2, .pos3, .pos4, .pos5 {
+    /* position: relative; */
+    background: black;
+    color: white;
+    padding: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    border: 1px solid white;
+    outline: 2px solid rgba(0, 0, 0, 0.25);
+    transition: all 0.45s cubic-bezier(0.175, 0.285, 0.32, 1.575);
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    top: unset!important;
+    left: unset!important;
+    transform: scale(0.5);
+    position: relative;
+  }
+
+  #myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__overLay > .pos1,
+  #myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__overLay > .pos2,
+  #myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__overLay > .pos3,
+  #myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__overLay > .pos4,
+  #myDogRuffles.popRuffles + .module--body > .module--list > .module--list--item > .myDog > .myDog__overLay > .pos5 {
+    transform: scale(1);
+  }
+
+
+  .myDog__image {
+    width: 100%;
+    justify-content: unset;
+  }
+
+  .contact--skills__top {
+    flex-direction: column;
+  }
+
+  .contact--skills__top--controls button {
+    margin: 0px 15px 0px 0px;
+  }
+
+  .contact--skills__list {
+    font-size: 0.95rem;
+  }
+
+  .contact--skills__list__category--item {
+    width: 40%;
+  }
+
+  .contact--skills__list__category--bar {
+    width: 60%;
   }
 }
 
@@ -176,8 +288,40 @@
   }
 
   .module--subtitle {
+    font-size: 1.15rem;
+  }
+
+  .contact--info__main {
+    width: 100%;
+  }
+
+  .contact--info__main--title {
     font-size: 1.25rem;
   }
+
+  .contact--info__main--item {
+    font-size: 1rem;
+    justify-content: space-between;
+    /* margin-left: 0px; */
+  }
+
+  .contact--info__main--item span {
+    margin-left: 0px;
+  }
+
+  .contact--info__main--item span:before {
+    display: none;
+  }
+
+  .contact--info__social--title {
+    font-size: 1.25rem;
+  }
+
+  .contact--skills__top--title {
+    font-size: 1.25rem;
+  }
+
+
 
   .module--list--item {
     width: 100%;
