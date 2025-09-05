@@ -1067,18 +1067,18 @@ let cookieCtaReject = document.querySelector(".cookieContainer__cta--reject");
 let cookieCtaAccept = document.querySelector(".cookieContainer__cta--accept");
 
 cookieBtn.addEventListener('click', () => {
-  cookieTerms.classList.add("cookieOpened");
+  cookieTerms.classList.toggle("cookieOpened");
 });
 
 cookieBtn.addEventListener('keyup', (event) => {
   if((event.key === "Enter") || (event.key === ' ')) {
-    cookieTerms.classList.add("cookieOpened");
+    cookieTerms.classList.toggle("cookieOpened");
   }
 })
 
-cookieCtaReject.addEventListener('click', () => {
-  cookieTerms.classList.remove("cookieOpened");
-})
+// cookieCtaReject.addEventListener('click', () => {
+//   cookieTerms.classList.remove("cookieOpened");
+// })
 
 cookieCtaAccept.addEventListener('click', () => {
   cookieTerms.classList.remove("cookieOpened");

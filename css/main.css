@@ -319,24 +319,17 @@ footer p {
   
 }
 
-/* .cookieTerms {
-
-} */
-
 .cookieContainer {
   z-index: 1000;
   position: fixed;
-  bottom: 0;
-  width: 1005;
+  bottom: 33px;
+  width: 100%;
   box-sizing: border-box;
   padding: 25px 20px;
   background: black;
   color: white;
   flex-direction: column;
-}
-
-.cookieContainer__info {
-
+  opacity: 0.85;
 }
 
 .cookieContainer__cta {
