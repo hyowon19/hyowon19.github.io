@@ -139,11 +139,6 @@ const techStackReset = () => {
   }, 550)
 }
 
-// sort up function
-
-
-// sort down function
-
 document.querySelector('.contact--skills__top--controls--reset').addEventListener('click', () => { techStackReset(); })
 
 document.querySelector('.contact--skills__top--controls--shuffle').addEventListener('click', () => { shuffleSkillBar(); })
@@ -1076,15 +1071,6 @@ cookieBtn.addEventListener('keyup', (event) => {
   }
 })
 
-// cookieCtaReject.addEventListener('click', () => {
-//   cookieTerms.classList.remove("cookieOpened");
-// })
-
 cookieCtaAccept.addEventListener('click', () => {
   cookieTerms.classList.remove("cookieOpened");
 })
-
-//noteToSelf
-//Expand on cookie section beyond reject/accept cta scenarios - some interaction with the user
-
-//consider adding a ruffleBot semi chat thingy maybe - BIG CONSIDER
